@@ -191,15 +191,103 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
               </div>
             ))}
 
-            {/* Lab Practice Card */}
-            <div className="rounded-3xl bg-[#1E1B18] p-6 sm:p-7 text-[#FAF3E8]">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#FFB067]">
-                <Terminal className="h-4 w-4" />
-                <span>Latihan Praktik Aman (Mini Lab)</span>
+            {/* Lab Practice Card + Module Navigation Side-by-Side */}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+              {/* Latihan Praktik */}
+              <div className="flex flex-col justify-between rounded-3xl bg-[#1E1B18] p-5 sm:p-6 text-[#FAF3E8] md:col-span-7">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#FFB067]">
+                    <Terminal className="h-4 w-4" />
+                    <span>Latihan Praktik Aman (Mini Lab)</span>
+                  </div>
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[#FAF3E8]/90">
+                    {lesson.labPractice}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1.5 text-[11px] text-[#FAF3E8]/50">
+                  <Sparkles className="h-3 w-3 text-[#FFD479]" />
+                  <span>Eksperimen aman di terminal / VM lokal</span>
+                </div>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-[#FAF3E8]/90">
-                {lesson.labPractice}
-              </p>
+
+              {/* Prev & Next Module Navigation */}
+              <div className="flex flex-col justify-between gap-3 md:col-span-5">
+                {/* Modul Sebelumnya */}
+                {prevMod ? (
+                  <Link
+                    href={`/materi/${prevMod.slug}`}
+                    className="group flex flex-1 items-center justify-between gap-2.5 rounded-2xl border border-[#1E1B18]/10 bg-white p-4 transition-all hover:bg-[#FFF8EE] hover:border-[#FFB067]/50 hover:shadow-sm"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FFB067]/15 text-[#C85A3D] group-hover:bg-[#FFB067] group-hover:text-[#1E1B18] transition-colors">
+                        <ArrowLeft className="h-4 w-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-[#6E6259]">
+                          Sebelumnya
+                        </p>
+                        <p className="truncate text-xs font-extrabold text-[#1E1B18]">
+                          {prevMod.title}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    className="flex flex-1 items-center gap-2.5 rounded-2xl border border-[#1E1B18]/10 bg-[#FAF3E8]/80 p-4 opacity-40 cursor-not-allowed select-none pointer-events-none"
+                    title="Sudah berada di modul pertama"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#1E1B18]/5 text-[#1E1B18]/30">
+                      <ArrowLeft className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#1E1B18]/40">
+                        Sebelumnya
+                      </p>
+                      <p className="truncate text-xs font-semibold text-[#1E1B18]/40">
+                        Modul Pertama
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Modul Sesudahnya */}
+                {nextMod ? (
+                  <Link
+                    href={`/materi/${nextMod.slug}`}
+                    className="group flex flex-1 items-center justify-between gap-2.5 rounded-2xl bg-[#1E1B18] p-4 text-[#FAF3E8] border border-white/10 transition-all hover:bg-[#2C2723] hover:border-[#FFB067]/50 hover:shadow-sm"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#FFB067]">
+                        Modul Berikutnya
+                      </p>
+                      <p className="truncate text-xs font-extrabold text-[#FAF3E8]">
+                        {nextMod.title}
+                      </p>
+                    </div>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FFB067] text-[#1E1B18] group-hover:scale-105 transition-transform">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    className="flex flex-1 items-center justify-between gap-2.5 rounded-2xl border border-white/10 bg-[#1E1B18]/40 p-4 text-[#FAF3E8]/40 opacity-40 cursor-not-allowed select-none pointer-events-none"
+                    title="Sudah berada di modul terakhir"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#FAF3E8]/40">
+                        Modul Berikutnya
+                      </p>
+                      <p className="truncate text-xs font-semibold text-[#FAF3E8]/40">
+                        Modul Terakhir
+                      </p>
+                    </div>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/5 text-[#FAF3E8]/30">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -260,9 +348,64 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
       ) : (
         /* Tab 2: Clean Markdown Reference Reader */
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <article className="lg:col-span-8 rounded-3xl border border-[#1E1B18]/10 bg-white p-6 sm:p-8 course-prose overflow-hidden">
-            <MarkdownBody content={topic.content} />
-          </article>
+          <div className="lg:col-span-8 space-y-6">
+            <article className="rounded-3xl border border-[#1E1B18]/10 bg-white p-6 sm:p-8 course-prose overflow-hidden">
+              <MarkdownBody content={topic.content} />
+            </article>
+
+            {/* Prev / Next Navigation for Tab 2 */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {prevMod ? (
+                <Link
+                  href={`/materi/${prevMod.slug}`}
+                  className="group flex items-center gap-3 rounded-3xl border border-[#1E1B18]/10 bg-white p-5 transition-all hover:bg-[#FFF8EE] hover:border-[#FFB067]/50"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FFB067]/15 text-[#C85A3D] group-hover:bg-[#FFB067] group-hover:text-[#1E1B18] transition-colors">
+                    <ArrowLeft className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase text-[#6E6259]">Sebelumnya</p>
+                    <p className="text-sm font-extrabold text-[#1E1B18]">{prevMod.title}</p>
+                  </div>
+                </Link>
+              ) : (
+                <div className="flex items-center gap-3 rounded-3xl border border-[#1E1B18]/10 bg-[#FAF3E8]/80 p-5 opacity-40 cursor-not-allowed select-none pointer-events-none">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#1E1B18]/5 text-[#1E1B18]/30">
+                    <ArrowLeft className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase text-[#1E1B18]/40">Sebelumnya</p>
+                    <p className="text-sm font-semibold text-[#1E1B18]/40">Modul Pertama</p>
+                  </div>
+                </div>
+              )}
+
+              {nextMod ? (
+                <Link
+                  href={`/materi/${nextMod.slug}`}
+                  className="group flex items-center justify-between gap-3 rounded-3xl bg-[#1E1B18] p-5 text-[#FAF3E8] border border-white/10 transition-all hover:bg-[#2C2723] hover:border-[#FFB067]/50"
+                >
+                  <div>
+                    <p className="text-[11px] font-bold uppercase text-[#FFB067]">Modul Berikutnya</p>
+                    <p className="text-sm font-extrabold">{nextMod.title}</p>
+                  </div>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FFB067] text-[#1E1B18] group-hover:scale-105 transition-transform">
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </Link>
+              ) : (
+                <div className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-[#1E1B18]/40 p-5 text-[#FAF3E8]/40 opacity-40 cursor-not-allowed select-none pointer-events-none">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase text-[#FAF3E8]/40">Modul Berikutnya</p>
+                    <p className="text-sm font-semibold text-[#FAF3E8]/40">Modul Terakhir</p>
+                  </div>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 text-[#FAF3E8]/30">
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
           <aside className="lg:col-span-4 space-y-5">
             <div className="sticky top-28 lg:top-6 space-y-5">
@@ -305,39 +448,6 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
               </div>
             </div>
           </aside>
-        </div>
-      )}
-
-      {/* Prev / Next Navigation */}
-      {(prevMod || nextMod) && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {prevMod ? (
-            <Link
-              href={`/materi/${prevMod.slug}`}
-              className="flex items-center gap-3 rounded-3xl border border-[#1E1B18]/10 bg-white p-5 transition-colors hover:bg-[#FFF8EE]"
-            >
-              <ArrowLeft className="h-5 w-5 text-[#C85A3D]" />
-              <div>
-                <p className="text-[11px] font-bold uppercase text-[#6E6259]">Sebelumnya</p>
-                <p className="text-sm font-extrabold text-[#1E1B18]">{prevMod.title}</p>
-              </div>
-            </Link>
-          ) : (
-            <div />
-          )}
-
-          {nextMod && (
-            <Link
-              href={`/materi/${nextMod.slug}`}
-              className="flex items-center justify-between gap-3 rounded-3xl bg-[#1E1B18] p-5 text-[#FAF3E8] transition-colors hover:bg-[#2C2723]"
-            >
-              <div>
-                <p className="text-[11px] font-bold uppercase text-[#FFB067]">Modul Berikutnya</p>
-                <p className="text-sm font-extrabold">{nextMod.title}</p>
-              </div>
-              <ArrowRight className="h-5 w-5 text-[#FFB067]" />
-            </Link>
-          )}
         </div>
       )}
     </motion.div>
