@@ -1,0 +1,69 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infosec_Reference | An Information Security Reference That Doesn't Suck!</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Free resource for anyone interested in learning more about Information Security.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="Robert Musser">
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div id="app">Loading...</div>
+  <script>
+    window.$docsify = {
+      name: 'Infosec_Reference',
+      repo: 'rmusser01/Infosec_Reference',
+      homepage: 'README.md',
+      maxLevel: 3,
+      subMaxLevel: 3,
+      coverpage: false,
+      loadSidebar: true,
+      relativePath: true,
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
+      markdown: function (marked, renderer) {
+        const renderHeading = renderer.heading;
+        renderer.heading = function (text, level) {
+          const html = renderHeading.apply(this, arguments);
+          if (!/<a\b[^>]*\b(?:id|name)\s*=/i.test(text)) return html;
+          const start = html.indexOf('<span>') + 6;
+          const end = html.lastIndexOf('</span></a></h');
+          const headingId = html.match(/^<h\d id="([^"]*)"/)[1];
+          const content = document.createElement('template');
+          content.innerHTML = html.slice(start, end);
+          const aliases = [];
+          for (const anchor of content.content.querySelectorAll('a[id],a[name]')) {
+            if (anchor.textContent.trim() || anchor.hasAttribute('href')) continue;
+            anchor.remove();
+            if (anchor.id === headingId) anchor.removeAttribute('id');
+            if (anchor.getAttribute('name') === headingId) anchor.removeAttribute('name');
+            if (anchor.hasAttribute('id') || anchor.hasAttribute('name')) aliases.push(anchor.outerHTML);
+          }
+          // Empty aliases belong outside the permalink; nesting anchors truncates its visible title.
+          return html.slice(0, start) + content.innerHTML + '</span></a>' + aliases.join('') + html.slice(html.lastIndexOf('</h'));
+        };
+        marked.setOptions({ renderer: renderer });
+        return marked;
+      },
+      search: {
+        paths: 'auto',
+        depth: 4,
+        maxAge: 86400000,
+        placeholder: 'Search the reference',
+        noData: 'No results',
+        hideOtherSidebarContent: true,
+        namespace: 'Infosec_Reference'
+      }
+    };
+  </script>
+  <script src="./search-paths.js"></script>
+  <script src="./css/docsify4.js"></script>
+  <script src="./css/emoji.min.js"></script>
+  <script src="./css/search.min.js"></script>
+</body>
+</html>
