@@ -1,0 +1,12 @@
+{
+  "name": "belajar-hacking-euy-wkwk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "StarSec Fast-Track — Kursus & Referensi Keamanan Siber Lokal",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "push": "node scripts/push.mjs"
+  }
+}

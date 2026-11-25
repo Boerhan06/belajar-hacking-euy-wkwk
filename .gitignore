@@ -1,0 +1,15 @@
+# Dependencies & Build
+node_modules/
+web/node_modules/
+web/.next/
+web/out/
+Infosec_Reference/node_modules/
+Infosec_Reference/archive-data/
+
+# Environment & Logs
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+.DS_Store
+Thumbs.db
