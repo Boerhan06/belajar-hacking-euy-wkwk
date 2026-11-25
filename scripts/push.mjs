@@ -26,8 +26,10 @@ if (!existsSync(resolve(rootDir, '.git'))) {
   run('git init -b main');
 }
 
+const rawArgs = process.argv.slice(2);
+const isForce = rawArgs.includes('--force') || rawArgs.includes('-f');
 const commitMsg =
-  process.argv.slice(2).join(' ').trim() ||
+  rawArgs.filter((a) => a !== '--force' && a !== '-f').join(' ').trim() ||
   `Update kursus & materi (${new Date().toLocaleDateString('id-ID')})`;
 
 console.log('🔍 Menyiapkan perubahan...');
@@ -52,5 +54,5 @@ if (!remoteUrl) {
 
 const branch = output('git branch --show-current') || 'main';
 console.log(`🚀 Mengirim (push) ke GitHub (${remoteUrl} -> branch ${branch})...`);
-run(`git push -u origin ${branch}`);
+run(`git push -u origin ${branch}${isForce ? ' --force' : ''}`);
 console.log('🎉 Berhasil push ke GitHub!');
