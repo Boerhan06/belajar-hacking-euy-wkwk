@@ -10,6 +10,14 @@
 
 ---
 
+## 📸 Tampilan Web (Preview)
+
+<div align="center">
+  <img src="public/preview.jpg" width="100%" alt="Tampilan Web NikoCode" style="border-radius: 16px;">
+</div>
+
+---
+
 ## 📌 Tentang Aplikasi Ini
 
 Folder `web/` adalah aplikasi pembelajaran interaktif yang dibangun sebagai antarmuka kursus modern untuk membaca dan mempelajari materi dari repositori **[rmusser01/Infosec_Reference](https://github.com/rmusser01/Infosec_Reference)** (berlisensi **MIT License**).

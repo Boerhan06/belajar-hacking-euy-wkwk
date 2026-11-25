@@ -35,6 +35,14 @@ Seluruh hak cipta dan pemberitahuan lisensi asli tetap dipertahankan sepenuhnya 
 
 ---
 
+## 📸 Tampilan Web (Preview)
+
+<div align="center">
+  <img src="web/public/preview.jpg" width="100%" alt="Tampilan Web NikoCode" style="border-radius: 16px;">
+</div>
+
+---
+
 ## ✨ Fitur Web Pembelajaran
 
 | Halaman | Fungsi Utama |
