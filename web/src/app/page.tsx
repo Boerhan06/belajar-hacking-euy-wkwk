@@ -353,48 +353,80 @@ export default function DashboardPage() {
         className="rounded-3xl bg-[#1E1B18] p-6 text-[#FAF3E8]"
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="rounded-2xl bg-[#FFB067] p-4 text-[#1E1B18]">
-            <p className="text-3xl font-black">{completedCount}</p>
-            <p className="mt-1 text-xs font-bold">Modul Selesai</p>
-          </div>
-          <div className="rounded-2xl bg-[#FFD479] p-4 text-[#1E1B18]">
-            <p className="text-3xl font-black">{remainingCount}</p>
-            <p className="mt-1 text-xs font-bold">Belum Selesai</p>
-          </div>
-          <div className="rounded-2xl bg-[#FF9472] p-4 text-[#1E1B18]">
-            <p className="text-3xl font-black">{Object.keys(quizScores).length}</p>
-            <p className="mt-1 text-xs font-bold">Kuis Dikerjakan</p>
+          {/* Stat 1: Modul Selesai */}
+          <div className="flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-[#FFB067]/40">
+            <div className="flex items-center justify-between">
+              <span className="text-3xl font-black tracking-tight text-[#FFB067]">{completedCount}</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFB067]/15">
+                <Check className="h-4 w-4 text-[#FFB067]" />
+              </div>
+            </div>
+            <p className="mt-3 text-xs font-semibold text-[#FAF3E8]/80">Modul Selesai</p>
           </div>
 
+          {/* Stat 2: Belum Selesai */}
+          <div className="flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-[#FFD479]/40">
+            <div className="flex items-center justify-between">
+              <span className="text-3xl font-black tracking-tight text-[#FFD479]">{remainingCount}</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFD479]/15">
+                <Clock className="h-4 w-4 text-[#FFD479]" />
+              </div>
+            </div>
+            <p className="mt-3 text-xs font-semibold text-[#FAF3E8]/80">Belum Selesai</p>
+          </div>
+
+          {/* Stat 3: Kuis Dikerjakan */}
+          <div className="flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-[#FF9472]/40">
+            <div className="flex items-center justify-between">
+              <span className="text-3xl font-black tracking-tight text-[#FF9472]">{Object.keys(quizScores).length}</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FF9472]/15">
+                <Trophy className="h-4 w-4 text-[#FF9472]" />
+              </div>
+            </div>
+            <p className="mt-3 text-xs font-semibold text-[#FAF3E8]/80">Kuis Dikerjakan</p>
+          </div>
+
+          {/* Quick Link 1: Materi */}
           <Link
             href="/materi"
-            className="flex flex-col justify-between rounded-2xl bg-white/10 p-4 transition-colors hover:bg-white/20"
+            className="group flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-white/20"
           >
-            <BookOpen className="h-5 w-5 text-[#FFB067]" />
+            <div className="flex items-center justify-between">
+              <BookOpen className="h-5 w-5 text-[#FFB067]" />
+              <ArrowUpRight className="h-4 w-4 text-[#FAF3E8]/40 transition-transform group-hover:text-[#FAF3E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
             <div className="mt-3">
-              <p className="text-sm font-bold">Materi Bacaan</p>
+              <p className="text-sm font-bold text-[#FAF3E8]">Materi Bacaan</p>
               <p className="text-[11px] text-[#FAF3E8]/60">50+ Topik Markdown</p>
             </div>
           </Link>
 
+          {/* Quick Link 2: Kuis */}
           <Link
             href="/kuis"
-            className="flex flex-col justify-between rounded-2xl bg-white/10 p-4 transition-colors hover:bg-white/20"
+            className="group flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-white/20"
           >
-            <HelpCircle className="h-5 w-5 text-[#FFD479]" />
+            <div className="flex items-center justify-between">
+              <HelpCircle className="h-5 w-5 text-[#FFD479]" />
+              <ArrowUpRight className="h-4 w-4 text-[#FAF3E8]/40 transition-transform group-hover:text-[#FAF3E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
             <div className="mt-3">
-              <p className="text-sm font-bold">Uji Pemahaman</p>
+              <p className="text-sm font-bold text-[#FAF3E8]">Uji Pemahaman</p>
               <p className="text-[11px] text-[#FAF3E8]/60">Kuis & Pembahasan</p>
             </div>
           </Link>
 
+          {/* Quick Link 3: Tanya Jawab */}
           <Link
             href="/tanya-jawab"
-            className="flex flex-col justify-between rounded-2xl bg-white/10 p-4 transition-colors hover:bg-white/20"
+            className="group flex flex-col justify-between rounded-2xl bg-white/[0.06] border border-white/10 p-4 transition-all hover:bg-white/[0.09] hover:border-white/20"
           >
-            <MessagesSquare className="h-5 w-5 text-[#FF9472]" />
+            <div className="flex items-center justify-between">
+              <MessagesSquare className="h-5 w-5 text-[#FF9472]" />
+              <ArrowUpRight className="h-4 w-4 text-[#FAF3E8]/40 transition-transform group-hover:text-[#FAF3E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
             <div className="mt-3">
-              <p className="text-sm font-bold">Tanya Jawab</p>
+              <p className="text-sm font-bold text-[#FAF3E8]">Tanya Jawab</p>
               <p className="text-[11px] text-[#FAF3E8]/60">FAQ & Catatan Pribadi</p>
             </div>
           </Link>
