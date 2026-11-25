@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="web/public/logo.jpg" width="140" alt="StarSec Fast-Track Logo" style="border-radius: 24px;">
+<img src="web/public/logo.jpg" width="140" alt="NikoCode Logo" style="border-radius: 24px;">
 
-# 🛡️ StarSec Fast-Track — Kursus & Referensi Keamanan Siber
+# 🐱 NikoCode — Kursus & Referensi Keamanan Siber
 
 **Platform Pembelajaran Keamanan Informasi (InfoSec) Lokal Berbasis Next.js, Tailwind CSS, & Koleksi Referensi Terkurasi**
 

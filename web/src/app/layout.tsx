@@ -15,9 +15,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'StarSec Fast-Track — Kursus Keamanan Siber Lokal',
+  title: 'NikoCode — Kursus Keamanan Siber Lokal',
   description:
-    'Platform pembelajaran keamanan siber lokal bergaya kursus profesional dengan peta belajar cepat, kuis interaktif, tanya jawab, dan contekan perintah.',
+    'Platform pembelajaran keamanan siber lokal NikoCode bergaya kursus profesional dengan peta belajar cepat, kuis interaktif, tanya jawab, dan contekan perintah.',
+  icons: {
+    icon: '/logo.jpg',
+    apple: '/logo.jpg',
+  },
 };
 
 export default function RootLayout({

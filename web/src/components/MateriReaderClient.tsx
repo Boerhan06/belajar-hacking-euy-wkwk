@@ -205,7 +205,7 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
 
           {/* Right Sidebar: Interactive Checklist & Next Step */}
           <aside className="lg:col-span-4 space-y-5">
-            <div className="sticky top-24 space-y-5">
+            <div className="sticky top-28 lg:top-6 space-y-5">
               <div className="rounded-3xl border border-[#1E1B18]/10 bg-white p-5">
                 <h3 className="text-sm font-extrabold text-[#1E1B18]">
                   Checklist Pemahaman
@@ -265,7 +265,7 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
           </article>
 
           <aside className="lg:col-span-4 space-y-5">
-            <div className="sticky top-24 space-y-5">
+            <div className="sticky top-28 lg:top-6 space-y-5">
               {topic.headings.length > 0 && (
                 <div className="rounded-3xl border border-[#1E1B18]/10 bg-white p-5">
                   <div className="flex items-center gap-2 text-sm font-extrabold text-[#1E1B18]">

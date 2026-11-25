@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -10,12 +10,15 @@ import {
   HelpCircle,
   MessagesSquare,
   Terminal,
+  CalendarDays,
   Flame,
   Sparkles,
-  ShieldCheck,
+  LogIn,
+  LogOut,
 } from 'lucide-react';
 import { useCourse } from '@/context/CourseContext';
 import { COURSE_MODULES } from '@/lib/courseData';
+import { LoginModal } from '@/components/LoginModal';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Beranda', icon: LayoutDashboard },
@@ -23,11 +26,13 @@ const NAV_ITEMS = [
   { href: '/kuis', label: 'Kuis', icon: HelpCircle },
   { href: '/tanya-jawab', label: 'Tanya Jawab', icon: MessagesSquare },
   { href: '/contekan', label: 'Contekan', icon: Terminal },
+  { href: '/aktivitas', label: 'Aktivitas', icon: CalendarDays },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
-  const { streakDays, xp, completedModules } = useCourse();
+  const { streakDays, xp, completedModules, user, logout } = useCourse();
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -49,14 +54,14 @@ export function Navbar() {
             <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl border-2 border-[#C85A3D] bg-[#FAF3E8] transition-transform duration-200 group-hover:scale-105">
               <img
                 src="/logo.jpg"
-                alt="StarSec Academy Logo"
+                alt="NikoCode Logo"
                 className="h-full w-full object-cover"
               />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-lg font-extrabold tracking-tight text-[#1E1B18]">
-                  StarSec
+                  NikoCode
                 </span>
                 <span className="rounded-full bg-[#FFEAD2] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#C85A3D]">
                   Fast
@@ -126,10 +131,38 @@ export function Navbar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 rounded-2xl bg-[#FFEAD2]/70 px-3.5 py-2.5 text-[11px] font-semibold text-[#52463C]">
-            <ShieldCheck className="h-4 w-4 shrink-0 text-[#C85A3D]" />
-            <span>Mode Lab Lokal & Aman</span>
-          </div>
+          {user ? (
+            <div className="flex items-center justify-between gap-2.5 rounded-2xl border border-[#1E1B18]/10 bg-white p-2.5">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="h-9 w-9 shrink-0 overflow-hidden rounded-xl border border-[#FFB067] bg-[#FAF3E8]">
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-xs font-extrabold text-[#1E1B18]">{user.name}</p>
+                  <p className="truncate text-[10px] font-medium text-[#6E6259]">{user.role}</p>
+                </div>
+              </div>
+              <button
+                onClick={logout}
+                title="Keluar"
+                className="shrink-0 rounded-xl p-1.5 text-[#6E6259] hover:bg-[#FFEAD2] hover:text-[#C85A3D] transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsLoginOpen(true)}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#FFB067] px-4 py-3 text-xs font-extrabold text-[#1E1B18] transition-colors hover:bg-[#FF9472]"
+            >
+              <LogIn className="h-4 w-4" />
+              <span>Masuk / Login</span>
+            </button>
+          )}
         </div>
       </aside>
 
@@ -138,9 +171,9 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-3 px-4 py-2.5">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="h-9 w-9 overflow-hidden rounded-xl border-2 border-[#C85A3D] bg-[#FFF8EE]">
-              <img src="/logo.jpg" alt="StarSec Logo" className="h-full w-full object-cover" />
+              <img src="/logo.jpg" alt="NikoCode Logo" className="h-full w-full object-cover" />
             </div>
-            <span className="text-sm font-extrabold text-[#1E1B18]">StarSec</span>
+            <span className="text-sm font-extrabold text-[#1E1B18]">NikoCode</span>
           </Link>
 
           <div className="flex items-center gap-1.5">
@@ -150,6 +183,27 @@ export function Navbar() {
             <span className="inline-flex items-center gap-1 rounded-full bg-[#FFB067] px-2.5 py-1 text-[11px] font-bold text-[#1E1B18]">
               <Sparkles className="h-3 w-3" /> {xp} XP
             </span>
+            {user ? (
+              <button
+                onClick={logout}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#1E1B18]/10 bg-white py-0.5 pl-0.5 pr-2.5 text-[11px] font-bold text-[#1E1B18]"
+                title="Klik untuk keluar"
+              >
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className="h-6 w-6 rounded-full object-cover"
+                />
+                <span className="max-w-[72px] truncate">{user.name}</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setIsLoginOpen(true)}
+                className="inline-flex items-center gap-1 rounded-full bg-[#1E1B18] px-2.5 py-1 text-[11px] font-bold text-[#FFB067]"
+              >
+                <LogIn className="h-3 w-3" /> Login
+              </button>
+            )}
           </div>
         </div>
 
@@ -175,6 +229,8 @@ export function Navbar() {
           })}
         </nav>
       </header>
+
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   );
 }

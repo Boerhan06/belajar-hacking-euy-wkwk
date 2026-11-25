@@ -37,6 +37,7 @@ const cardVariants = {
 
 export default function DashboardPage() {
   const {
+    user,
     completedModules,
     dailyCheckins,
     toggleDayCheckin,
@@ -85,7 +86,7 @@ export default function DashboardPage() {
                   <ShieldCheck className="h-3 w-3" /> Mode Belajar Cepat
                 </span>
                 <h1 className="mt-1 text-lg sm:text-xl font-extrabold tracking-tight text-[#1E1B18]">
-                  Halo, Pembelajar InfoSec!
+                  {user ? `Halo, ${user.name}!` : 'Halo, Pembelajar InfoSec!'}
                 </h1>
                 <p className="text-xs text-[#6E6259]">
                   Kursus keamanan siber lokal & terstruktur

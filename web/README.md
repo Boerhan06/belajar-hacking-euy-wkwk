@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="public/logo.jpg" width="120" alt="StarSec Logo">
+<img src="public/logo.jpg" width="120" alt="NikoCode Logo">
 
-# 🛡️ StarSec Fast-Track Web (`web/`)
+# 🐱 NikoCode Web (`web/`)
 
 **Antarmuka Kursus Keamanan Siber Lokal — Next.js · TypeScript · Tailwind CSS · Lucide · Framer Motion**
 
