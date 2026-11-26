@@ -187,13 +187,13 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
     const modTitle = mod ? mod.title : slug.replace(/_/g, ' ');
     const activityLogs = !exists
       ? [
-          createLog(
-            `Menyelesaikan Modul: ${modTitle}`,
-            `Progres modul ditandai selesai (+${mod?.xp ?? 40} XP)`,
-            'modul'
-          ),
-          ...state.activityLogs,
-        ]
+        createLog(
+          `Menyelesaikan Modul: ${modTitle}`,
+          `Progres modul ditandai selesai (+${mod?.xp ?? 40} XP)`,
+          'modul'
+        ),
+        ...state.activityLogs,
+      ]
       : state.activityLogs;
 
     persist({ ...state, completedModules, xp, activityLogs });
@@ -208,13 +208,13 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
 
     const activityLogs = willCheck
       ? [
-          createLog(
-            `Check-in Target Harian (${DAYS_FULL[dayIndex]})`,
-            `Total hari belajar aktif minggu ini: ${streakDays}/7 hari`,
-            'checkin'
-          ),
-          ...state.activityLogs,
-        ]
+        createLog(
+          `Check-in Target Harian (${DAYS_FULL[dayIndex]})`,
+          `Total hari belajar aktif minggu ini: ${streakDays}/7 hari`,
+          'checkin'
+        ),
+        ...state.activityLogs,
+      ]
       : state.activityLogs;
 
     persist({ ...state, dailyCheckins, streakDays, activityLogs });

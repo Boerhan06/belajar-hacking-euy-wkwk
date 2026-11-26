@@ -99,7 +99,7 @@ export function Navbar() {
                 onClick={() => setActiveTrack('iot')}
                 className={`flex items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-extrabold transition-all ${
                   activeTrack === 'iot'
-                    ? 'bg-[#1E1B18] text-[#2DD4BF] shadow-sm'
+                    ? 'bg-[#1E1B18] text-[#FF6B6B] shadow-sm'
                     : 'text-[#6E6259] hover:bg-[#FFEAD2]/70 hover:text-[#1E1B18]'
                 }`}
                 title="Pilih Jalur IoT Gelang SOS"
@@ -222,7 +222,7 @@ export function Navbar() {
             >
               {activeTrack === 'iot' ? (
                 <>
-                  <Cpu className="h-3 w-3 text-[#2DD4BF]" /> IoT
+                  <Cpu className="h-3 w-3 text-[#FF6B6B]" /> IoT
                 </>
               ) : (
                 <>

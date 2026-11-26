@@ -83,8 +83,8 @@ export const COURSE_TRACKS: CourseTrack[] = [
     tagline: 'Panduan Implementasi Gelang Pintar Darurat Berbasis ESP32 TinyML',
     description: 'Tuntunan lengkap proyek IoT Gelang SOS: Arsitektur hardware ESP32, Random Forest emlearn C++, ekstraksi fitur 50Hz, sensor fusion MPU6050+MAX30102, dan cloud Firebase.',
     iconName: 'Cpu',
-    color: '#2DD4BF',
-    accentBg: 'bg-[#2DD4BF]/15',
+    color: '#FF6B6B',
+    accentBg: 'bg-[#FF6B6B]/15',
     phaseCount: 3,
     moduleCount: 7,
   },
@@ -367,7 +367,7 @@ export const IOT_PHASES: CoursePhase[] = [
     title: 'Fase 1: Konsep Sistem & Inti TinyML',
     badge: 'Arsitektur & AI',
     description: 'Pahami latar belakang keselamatan lansia, spesifikasi hardware ESP32, dan implementasi TinyML Random Forest.',
-    color: '#2DD4BF',
+    color: '#FF6B6B',
     trackId: 'iot',
   },
   {
@@ -375,7 +375,7 @@ export const IOT_PHASES: CoursePhase[] = [
     title: 'Fase 2: Pemrosesan Sinyal & Sensor Fusion',
     badge: 'Sinyal & Sensor',
     description: 'Ekstraksi fitur sliding window 50Hz, reduksi false alarm ADL, dan fusi sensor MPU6050 + MAX30102 / Flex.',
-    color: '#38BDF8',
+    color: '#FF8577',
     trackId: 'iot',
   },
   {
@@ -383,7 +383,7 @@ export const IOT_PHASES: CoursePhase[] = [
     title: 'Fase 3: Integrasi Cloud, Alert & Skripsi',
     badge: 'Cloud & Evaluasi',
     description: 'Konektivitas Wi-Fi TLS, Firebase Realtime DB, aplikasi caregiver, feedback audio/buzzer, dan matriks pengujian SINTA.',
-    color: '#A78BFA',
+    color: '#FFA396',
     trackId: 'iot',
   },
 ];

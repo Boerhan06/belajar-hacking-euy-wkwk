@@ -111,7 +111,7 @@ export function MateriListClient({
                     className={`h-4 w-4 ${
                       active
                         ? t.id === 'iot'
-                          ? 'text-[#2DD4BF]'
+                          ? 'text-[#FF6B6B]'
                           : 'text-[#FFB067]'
                         : 'text-[#6E6259]'
                     }`}
