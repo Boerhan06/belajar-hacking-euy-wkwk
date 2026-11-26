@@ -28,7 +28,7 @@ import {
   Target,
 } from 'lucide-react';
 import { useCourse } from '@/context/CourseContext';
-import { COURSE_MODULES, COURSE_PHASES } from '@/lib/courseData';
+import { COURSE_MODULES, COURSE_PHASES, IOT_MODULES, IOT_PHASES } from '@/lib/courseData';
 import { MODULE_LESSONS } from '@/lib/lessonContent';
 import type { MarkdownTopic } from '@/lib/markdown';
 
@@ -42,13 +42,17 @@ export function MateriReaderClient({ topic }: { topic: MarkdownTopic }) {
   );
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
 
-  const currentIdx = COURSE_MODULES.findIndex((m) => m.slug === topic.slug);
-  const meta = currentIdx >= 0 ? COURSE_MODULES[currentIdx] : null;
-  const phase = meta ? COURSE_PHASES.find((p) => p.id === meta.phaseId) : null;
-  const prevMod = currentIdx > 0 ? COURSE_MODULES[currentIdx - 1] : null;
+  const isIot = topic.slug.startsWith('iot-') || IOT_MODULES.some((m) => m.slug === topic.slug);
+  const trackModules = isIot ? IOT_MODULES : COURSE_MODULES;
+  const trackPhases = isIot ? IOT_PHASES : COURSE_PHASES;
+
+  const currentIdx = trackModules.findIndex((m) => m.slug === topic.slug);
+  const meta = currentIdx >= 0 ? trackModules[currentIdx] : null;
+  const phase = meta ? trackPhases.find((p) => p.id === meta.phaseId) : null;
+  const prevMod = currentIdx > 0 ? trackModules[currentIdx - 1] : null;
   const nextMod =
-    currentIdx >= 0 && currentIdx < COURSE_MODULES.length - 1
-      ? COURSE_MODULES[currentIdx + 1]
+    currentIdx >= 0 && currentIdx < trackModules.length - 1
+      ? trackModules[currentIdx + 1]
       : null;
 
   const toggleCheckItem = (idx: number) => {

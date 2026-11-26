@@ -17,6 +17,7 @@ export interface MarkdownTopic {
 }
 
 const DRAFT_DIR = path.resolve(process.cwd(), '..', 'Infosec_Reference', 'Draft');
+const IOT_DIR = path.resolve(process.cwd(), 'src', 'content', 'iot');
 
 function sanitizeSlug(slug: string): string {
   return slug.replace(/[^a-zA-Z0-9_&\-\s]/g, '');
@@ -24,7 +25,9 @@ function sanitizeSlug(slug: string): string {
 
 export function getMarkdownTopic(slug: string): MarkdownTopic | null {
   const cleanSlug = sanitizeSlug(slug);
-  const candidates = [
+  const candidates: string[] = [
+    path.join(IOT_DIR, `${cleanSlug}.md`),
+    path.join(IOT_DIR, cleanSlug),
     path.join(DRAFT_DIR, `${cleanSlug}.md`),
     path.join(DRAFT_DIR, cleanSlug),
   ];
@@ -32,7 +35,11 @@ export function getMarkdownTopic(slug: string): MarkdownTopic | null {
   let targetPath: string | null = null;
   for (const candidate of candidates) {
     const resolved = path.resolve(candidate);
-    if (resolved.startsWith(DRAFT_DIR) && fs.existsSync(resolved) && fs.statSync(resolved).isFile()) {
+    if (
+      (resolved.startsWith(IOT_DIR) || resolved.startsWith(DRAFT_DIR)) &&
+      fs.existsSync(resolved) &&
+      fs.statSync(resolved).isFile()
+    ) {
       targetPath = resolved;
       break;
     }
@@ -90,22 +97,41 @@ export function getMarkdownTopic(slug: string): MarkdownTopic | null {
 }
 
 export function getAllDraftFiles(): { slug: string; title: string; fileName: string }[] {
-  if (!fs.existsSync(DRAFT_DIR)) return [];
-  const entries = fs.readdirSync(DRAFT_DIR, { withFileTypes: true });
-  return entries
-    .filter(
-      (entry) =>
+  const results: { slug: string; title: string; fileName: string }[] = [];
+
+  // 1. InfoSec Drafts
+  if (fs.existsSync(DRAFT_DIR)) {
+    const entries = fs.readdirSync(DRAFT_DIR, { withFileTypes: true });
+    for (const entry of entries) {
+      if (
         entry.isFile() &&
         entry.name.endsWith('.md') &&
         !['README.md', '_sidebar.md', 'Subject_Index.md', 'help.md', 'index.md'].includes(entry.name)
-    )
-    .map((entry) => {
-      const slug = entry.name.replace(/\.md$/, '');
-      return {
-        slug,
-        fileName: entry.name,
-        title: slug.replace(/_/g, ' '),
-      };
-    })
-    .sort((a, b) => a.title.localeCompare(b.title));
+      ) {
+        const slug = entry.name.replace(/\.md$/, '');
+        results.push({
+          slug,
+          fileName: entry.name,
+          title: slug.replace(/_/g, ' '),
+        });
+      }
+    }
+  }
+
+  // 2. IoT Module Files
+  if (fs.existsSync(IOT_DIR)) {
+    const iotEntries = fs.readdirSync(IOT_DIR, { withFileTypes: true });
+    for (const entry of iotEntries) {
+      if (entry.isFile() && entry.name.endsWith('.md')) {
+        const slug = entry.name.replace(/\.md$/, '');
+        results.push({
+          slug,
+          fileName: entry.name,
+          title: slug.replace(/_/g, ' '),
+        });
+      }
+    }
+  }
+
+  return results.sort((a, b) => a.title.localeCompare(b.title));
 }

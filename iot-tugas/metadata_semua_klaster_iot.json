@@ -1,0 +1,646 @@
+{
+  "Klaster_1_Latar_Belakang_Use_Case_SOS": {
+    "name": "Klaster 1: Latar Belakang & Use-Case (Gelang SOS untuk Lansia & Disabilitas)",
+    "focus": "Urgensi masalah, keterbatasan tombol fisik saat kondisi darurat/panik, desain wearable ramah lansia/disabilitas, pengenalan gestur darurat berbasis pergelangan tangan.",
+    "papers": [
+      {
+        "title": "AI-DRIVEN WEARABLE TECHNOLOGY FOR ROUTINE MONITORING IN ELDERLY WITH DEMENTIA",
+        "year": 2026,
+        "authors": [
+          "Mariana da Costa Carvalho"
+        ],
+        "venue": "CiencIPCA",
+        "doi": "https://openalex.org/W7221735356",
+        "oa_url": "https://ciencipca.ipca.pt/bitstreams/c31d6cde-a59b-42cb-a6c1-8588f44dfa45/download",
+        "abstract": "Dementia is a progressive neurodegenerative condition that significantly impairs cognitive function, autonomy, and the ability to perform daily activities, representing a growing global public health challenge. As the aging population increases, there is an urgent need for intelligent and scalable solutions capable of supporting continuous monitoring and early detection of behavioural changes in elderly individuals living with dementia. This dissertation presents the development of an Artificial Intelligence (AI) driven wearable monitoring system designed to recognize daily activities and detect anomalies in routine behaviour. The proposed approach integrates multimodal sensor data, including inertial and physiological signals, and evaluates both classical machine learning models and deep learning architectures for time-series analysis. The experimental work is structured into four stages. First, activity recognition models are evaluated using public and real-world datasets, where ensemble methods, particularly Light Gradient Boosting Machine (LightGBM) and eXtreme Gradient Boosting (XGBoost) consistently achieve the best performance, with accuracy reaching 0.98% in controlled scenarios, although subtle and static activities remain challenging to classify due to limitations of wrist-based sensing. Second, a synthetic framework generates realistic daily routines and simulate anomalous behaviour. Additionally, a sequence-based anomaly detection model based on a Bidirectional Gated Recurrent Unit (GRU) trained under a semi-supervised paradigm using only normal routines, achieves 99.4% accuracy and F1-scores above 0.95, showing that modelling behaviour as temporal sequences improves the detection of deviations from routine patterns. Third, a real-world multimodal dataset is collected to validate the data acquisition and processing pipeline under naturalistic conditions. The bestperforming model, LightGBM, achieved an accuracy of 0.73 and a weighted F1-score of 0.70, confirming the approach’s feasibility while revealing limitations in recognizing subtle and low-movement activities. Finally, building on this dataset, an integrated framework combines an XGBoost activity classifier with two complementary, fully unsupervised anomaly detectors, a Long Short-Term Memory (LSTM) Autoencoder and a rule-based duration detector, applied to continuous routines reconstructed from real sensor segments, achieving a mean F1-score of 0.798 and a false alarm rate of 2.9% on unseen routines without requiring any labelled anomalous data. Overall, this work demonstrates that integrating activity recognition with routinebased modelling provides a more effective framework for behavioural monitoring in dementia care. By moving beyond isolated activity classification towards sequence-based analysis, the proposed approach enables more meaningful detection of behavioural changes, supporting the development of proactive and context-aware monitoring systems.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\Markdown\\01_2026_AI-DRIVEN WEARABLE TECHNOLOGY FOR ROUTINE MONITORING IN ELDERLY WITH DEMENTIA.md"
+      },
+      {
+        "title": "Technology-assisted home support of community-dwelling older adults living with dementia and their family caregivers: A ten-year systematic review",
+        "year": 2024,
+        "authors": [
+          "Alexander Moreno",
+          "Henrick Durce",
+          "Carlos A. Cifuentes",
+          "Marcela Múnera",
+          "Kelly Acevedo"
+        ],
+        "venue": "Gerontechnology",
+        "doi": "https://doi.org/10.4017/gt.2025.24.1.1160.04",
+        "oa_url": "https://journal.gerontechnology.org/addCount.aspx?aid=3607&download=f64efc006fdc4e9fa5b96861350a6cfa.pdf",
+        "abstract": "Background: Dementia represents a primary global public health concern. Gerontechnology can support community-dwelling older adults living with dementia and their family caregivers to age in place. Research Aim: The current systematic review of the literature aims to provide a comprehensive description of technologies designed and tested to assist community-dwelling older adults living with dementia to do so. Methods: A systematic literature search was conducted in five different databases (CINAHL, Medline, PsycINFO, AgeLine, and Web of Science) and validated by two independent librarians. Using COVIDENCE software, two independent reviewers screened records from 2012 to 2022, available in English, French, and Spanish. Results: There were 1563 references published. After removing the duplicates, 877 titles and abstracts were screened and the full text of 132 studies was assessed for eligibility, with only 20 records meeting inclusion criteria. Conclusion: The technologies identified have overlapping functionalities including: a) behavioral monitoring, b) health monitoring, c) caregiver education, d) communication, e) tracking devices, and f) reminders, emergency warnings, and solutions for social isolation and daily activities support. We present a theoretical model to conceptualize gerontechnology use in people living with dementia and their family caregivers and provide recommendations for clinical practice, research, technological development, and public policy to foster the development and implementation of gerontechnology in the dementia continuum.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\Markdown\\02_2024_Technology-assisted home support of community-dwelling older adults living with dementia and their f.md"
+      },
+      {
+        "title": "A review of Rescue Methods After Intelligent Rescue Equipment Approaches a Drowning Person",
+        "year": 2026,
+        "authors": [
+          "Dewei Pan",
+          "Q. Zhang",
+          "Zhijie Liu",
+          "Wei Zhang",
+          "Runqiang Li"
+        ],
+        "venue": "Pomorstvo",
+        "doi": "https://doi.org/10.31217/p.40.1.5",
+        "oa_url": "https://hrcak.srce.hr/file/495663",
+        "abstract": "Drowning is still the main cause of accidental death worldwide, and intelligent rescue technology is needed for rapid and effective intervention. This study investigated the rescue methods used by intelligent devices - autonomous rescue devices, auxiliary self-rescue devices, and wearable intelligent rescue devices - when reaching a person who has fallen into the water. Using IEEE Xplore, Scopus, Web of Science and other digital databases, this paper systematically reviews the research on hardware design, sensor integration, control algorithm and human-computer interaction from 2009 to 2025. The results show that multi-sensor fusion, adaptive stability and safe human computer interaction are crucial for reliable performance in complex aquatic environments. Future advancements are proposed, include enhancing robust perception, adaptive stabilization, and human-computer interaction security to critically address system-level challenges of cross-domain coordination, standardized interoperability, and reliable algorithmic decision-making in complex aquatic environments. These insights provide a basis for advancing intelligent drowning rescue systems, linking technological innovation with practical safety applications.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\PDF\\03_2026_A review of Rescue Methods After Intelligent Rescue Equipment Approaches a Drowning Person.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\Markdown\\03_2026_A review of Rescue Methods After Intelligent Rescue Equipment Approaches a Drowning Person.md"
+      },
+      {
+        "title": "Systematic Literature Review untuk Identifikasi Penggunaan Sensor dalam Deteksi Rasa Sakit",
+        "year": 2025,
+        "authors": [
+          "Priskila Veronika Giawa",
+          "Devi Yohana Samosir",
+          "Jesi Romaito pane",
+          "Elvin Josafat Silaban",
+          "Abdi Dharma"
+        ],
+        "venue": "Jurnal Algoritma",
+        "doi": "https://doi.org/10.33364/algoritma/v.22-2.2544",
+        "oa_url": "https://jurnal.itg.ac.id/index.php/algoritma/article/download/2544/1528",
+        "abstract": "Deteksi nyeri secara objektif merupakan tantangan penting dalam bidang medis karena nyeri bersifat subjektif dan sulit diukur secara akurat, terutama pada pasien yang tidak mampu berkomunikasi. Penelitian ini bertujuan mengidentifikasi dan menganalisis jenis teknologi sensor dan non-sensor yang digunakan dalam deteksi nyeri serta mengevaluasi tren perkembangan teknologi dalam mendeteksi nyeri. Metodologi yang digunakan adalah studi literatur sistematis (Systematic Literature Review) dengan protokol PRISMA, melibatkan pencarian dan seleksi ketat dari database Scopus, PubMed, dan Google Scholar. Dari total 3.559 artikel yang diidentifikasi, 130 studi dipilih setelah melalui proses penyaringan dan penilaian kualitas. Semua artikel yang lolos kemudian dianalisis dengan mengekstrak informasi yang relevan dengan topik penelitian. Hasil penelitian menunjukkan bahwa sensor fisiologis seperti EDA, ECG, EMG, dan EEG, serta teknologi non-sensor seperti analisis ekspresi wajah dan pendekatan kombinasi antara sensor fisiologis dan non-sensor, merupakan pendekatan utama dalam deteksi nyeri. Tren terkini meliputi penggunaan wearable devices, federated learning, dan explainable AI. Selain itu, teknologi sensor berperan penting dalam layanan kesehatan karena mampu mengintegrasikan berbagai data fisiologis dan perilaku untuk mendukung pengambilan keputusan otomatis, sehingga meningkatkan efisiensi dan akurasi dalam diagnosis nyeri. Penelitian ini merekomendasikan pengembangan sistem deteksi nyeri yang lebih akurat, adaptif, dan etis, serta pengujian di lingkungan klinis nyata untuk meningkatkan validitas dan penerimaan teknologi ini dalam praktik medis.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\PDF\\04_2025_Systematic Literature Review untuk Identifikasi Penggunaan Sensor dalam Deteksi Rasa Sakit.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\Markdown\\04_2025_Systematic Literature Review untuk Identifikasi Penggunaan Sensor dalam Deteksi Rasa Sakit.md"
+      },
+      {
+        "title": "Fine-Grained Human Activity Recognition in Smart Homes Through Photoplethysmography-Based Hand Gesture Detection",
+        "year": 2024,
+        "authors": [
+          "Habba'S Ngodjou Doukaga",
+          "Noro Haritiana Louisiane Randrianarivelo Rakotoarson",
+          "Gabriel Aubin-Morneau",
+          "Pascal E. Fortin",
+          "Julien Maítre"
+        ],
+        "venue": "International Conference on PErvasive Technologies Related to Assistive Environments (PETRA)",
+        "doi": "https://doi.org/10.1145/3652037.3652041",
+        "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3652037.3652041",
+        "abstract": "The aging population, coupled with medical staff shortages, has become a significant challenge in most developed countries. It is increasingly evident that the necessity to maintain elders at home cannot be overlooked. To ensure their well-being and safety, the concept of smart homes emerges as a promising solution, monitoring their daily activities and providing support when necessary. In scientific literature, the focus has predominantly been on monitoring high-level activities such as eating, walking, or sleeping. However, for identifying erroneous executions, a system capable of recognizing fine-grained specific steps of a task in real time is required. In this paper, we propose a novel algorithmic approach for fine-grained activity recognition, utilizing photoplethysmography sensors. The machine learning approach leverages a dataset collected from a wristband equipped with an accelerometer and photoplethysmography sensors. To construct this dataset, we defined a series of atomic cooking gestures performed by participants. The collected data have been labeled and will be made available to the scientific community. We achieved promising results, with an accuracy of 94%, demonstrating the potential of photoplethysmography sensors in smart homes for assistive activity recognition, a domain where they have been rarely utilized.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_1_Latar_Belakang_Use_Case_SOS\\Markdown\\05_2024_Fine-Grained Human Activity Recognition in Smart Homes Through Photoplethysmography-Based Hand Gestu.md"
+      }
+    ]
+  },
+  "Klaster_2_TinyML_Random_Forest_ESP32": {
+    "name": "Klaster 2: Inti Divisi AI: TinyML & Random Forest di ESP32",
+    "focus": "Justifikasi Random Forest di mikrokontroler (ESP32/ESP32-S3), keunggulan efisiensi Flash/RAM vs Deep Learning (CNN/LSTM), latensi inferensi on-device (<10 ms), dan implementasi C++ header/emlearn.",
+    "papers": [
+      {
+        "title": "A Comprehensive Survey on TinyML",
+        "year": 2023,
+        "authors": [
+          "Youssef Abadade",
+          "Anas Temouden",
+          "Hatim Bamoumen",
+          "Nabil Benamar",
+          "Yousra Chtouki"
+        ],
+        "venue": "IEEE Access",
+        "doi": "https://doi.org/10.1109/access.2023.3294111",
+        "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10177729.pdf",
+        "abstract": "Recent spectacular progress in computational technologies has led to an unprecedented boom in the field of Artificial Intelligence (AI). AI is now used in a plethora of research areas and has demonstrated its capability to bring new approaches and solutions to various research problems. However, the extensive computation required to train AI algorithms comes with a cost. Driven by the need to reduce the energy consumption, the carbon footprint and the cost of computers running machine learning algorithms, TinyML is nowadays considered as a promising AI alternative focusing on technologies and applications for extremely low-profile devices. This paper presents the results of a literature survey of all TinyML applications and related research efforts. Our survey builds a taxonomy of TinyML techniques that have been used so far to bring new solutions to various domains, such as healthcare, smart farming, environment, and anomaly detection. Finally, this survey highlights the remaining challenges and points out possible future research directions. We anticipate that this survey will motivate further discussions on the various fields of applications of TinyML and the synergy of resource-constrained devices and edge intelligence.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\Markdown\\01_2023_A Comprehensive Survey on TinyML.md"
+      },
+      {
+        "title": "A review on TinyML: State-of-the-art and prospects",
+        "year": 2021,
+        "authors": [
+          "Partha Pratim Ray"
+        ],
+        "venue": "Journal of King Saud University - Computer and Information Sciences",
+        "doi": "https://doi.org/10.1016/j.jksuci.2021.11.019",
+        "oa_url": "https://www.sciencedirect.com/science/article/pii/S1319157821003335/pdf",
+        "abstract": "Machine learning has become an indispensable part of the existing technological domain. Edge computing and Internet of Things (IoT) together presents a new opportunity to imply machine learning techniques at the resource constrained embedded devices at the edge of the network. Conventional machine learning requires enormous amount of power to predict a scenario. Embedded machine learning – TinyML paradigm aims to shift such plethora from traditional high-end systems to low-end clients. Several challenges are paved while doing such transition such as, maintaining the accuracy of learning models, provide train-to-deploy facility in resource frugal tiny edge devices, optimizing processing capacity, and improving reliability. In this paper, we present an intuitive review about such possibilities for TinyML. We firstly, present background of TinyML. Secondly, we list the tool sets for supporting TinyML. Thirdly, we present key enablers for improvement of TinyML systems. Fourthly, we present state-of-the-art about frameworks for TinyML. Finally, we identify key challenges and prescribe a future roadmap for mitigating several research issues of TinyML.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\Markdown\\02_2021_A review on TinyML State-of-the-art and prospects.md"
+      },
+      {
+        "title": "Hand Gesture Recognition and Conversion to Speech for the Speech Impaired Using a Flex Sensor Glove and ESP32 Microcontroller: A Preliminary Evaluation",
+        "year": 2026,
+        "authors": [
+          "Mohamad Haniff Harun",
+          "Arman Hadi Azahar",
+          "Shamsul Fakhar Abd Gani",
+          "Md Ashadi Md Johari",
+          "Aminah Ahmad"
+        ],
+        "venue": "International Journal of Research and Innovation in Social Science",
+        "doi": "https://doi.org/10.47772/ijriss.2026.100900744",
+        "oa_url": "https://rsisinternational.org/journals/ijriss/uploads/vol10-iss9-pg10742-10758-202610_pdf.pdf",
+        "abstract": "People who rely on sign language still find it hard to talk with the many hearing people who have never learned it. This paper describes a low-cost, glove-based translator that turns finger bending into spoken output. Five flex sensors, one on each finger, are read by an ESP32 microcontroller, which classifies the hand posture, plays a pre-recorded voice clip through a DF Mini Player and speaker, and logs the recognised gesture to Google Sheets over Wi-Fi. In the evaluated configuration, each finger stands for one vowel: thumb (A), index (E), middle (I), ring (O) and pinky (U). Three candidates each performed at least four bending cycles per vowel while the raw sensor output was captured on the Arduino serial plotter. All 15 candidate–letter combinations produced clear, repeatable square-like waveforms, with readings near 4,100–4,200 when the finger was straight and falling to between roughly 1,000 and 2,500 when it was bent. The lower plateau differed from one person to another, which points to the need for per-user calibration. Timing tests showed a mean delay of 20.4 s between the serial monitor and the cloud log, and a further 20.4 s before the vowel was heard, giving an end-to-end delay of about 40 s. Recognition was therefore dependable, while response time remains the main weakness to be addressed. The design is modular and inexpensive, and it supports the United Nations Sustainable Development Goals 3, 4 and 9.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\PDF\\03_2026_Hand Gesture Recognition and Conversion to Speech for the Speech Impaired Using a Flex Sensor Glove .pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\Markdown\\03_2026_Hand Gesture Recognition and Conversion to Speech for the Speech Impaired Using a Flex Sensor Glove .md"
+      },
+      {
+        "title": "A Review on the emerging technology of TinyML",
+        "year": 2024,
+        "authors": [
+          "Vasileios Tsoukas",
+          "Anargyros Gkogkidis",
+          "Eleni Boumpa",
+          "Athanasios P. Kakarountas"
+        ],
+        "venue": "ACM Computing Surveys",
+        "doi": "https://doi.org/10.1145/3661820",
+        "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3661820",
+        "abstract": "Tiny Machine Learning (TinyML) is an emerging technology proposed by the scientific community for developing autonomous and secure devices that can gather, process, and provide results without transferring data to external entities. The technology aims to democratize AI by making it available to more sectors and contribute to the digital revolution of intelligent devices. In this work, a classification of the most common optimization techniques for Neural Network compression is conducted. Additionally, a review of the development boards and TinyML software is presented. Furthermore, the work provides educational resources, a classification of the technology applications, and future directions and concludes with the challenges and considerations.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\Markdown\\04_2024_A Review on the emerging technology of TinyML.md"
+      },
+      {
+        "title": "Resource-aware edge deployment and trade-off analysis of TinyML classifiers for IoT health monitoring on an ESP32 microcontroller",
+        "year": 2026,
+        "authors": [
+          "Hashim Ali",
+          "Muhammad Tahir Akhtar"
+        ],
+        "venue": "Discover Internet of Things",
+        "doi": "https://doi.org/10.1007/s43926-026-00477-6",
+        "oa_url": "https://doi.org/10.1007/s43926-026-00477-6",
+        "abstract": "Continuous health monitoring in Internet of Things (IoT) settings increasingly requires inference to be executed on-device rather than in the cloud, especially when latency, intermittent connectivity, privacy, and battery life are primary design constraints. This article presents a resource-aware TinyML deployment benchmark for a partial National Early Warning Score 2 (NEWS2)-aligned health-status classification workload on a resource-constrained ESP32 microcontroller. The task maps four routinely available vital signs; heart rate, respiratory rate, peripheral oxygen saturation, and body temperature, to three derived severity categories: normal/stable, mild, and critical. Because the labels are rule-derived rather than prospectively adjudicated clinical outcomes, the task is treated as a clinically interpretable embedded-inference workload rather than as a validated clinical deterioration prediction model. Five model families were evaluated under a common training, conversion, firmware, and measurement protocol: decision tree (DT), random forest (RF), support vector machine (SVM), multilayer perceptron (MLP), and deep neural network (DNN). The main contribution of this study is an edge-deployment evaluation that exposes trade-offs among predictive accuracy, end-to-end latency, memory footprint, throughput, and current draw. On the held-out software test set, RF obtained the highest accuracy, followed closely by DT, while all models achieved broadly comparable aggregate performance. On-device measurements showed that operational behavior differed much more strongly than predictive performance. RF achieved the highest selected-subset device accuracy but approached the ESP32 memory envelope, whereas DT provided the best deployment profile, with the lowest total latency, highest throughput under the total-latency definition, lowest current draw, and minimal static random-access memory (SRAM) and flash usage. Neural models remained compact after quantization but consumed substantially higher current during continuous inference, while the radial-basis-function SVM imposed high SRAM pressure. The results show that, for low-dimensional health-monitoring workloads on microcontrollers, the best deployable model is not necessarily the most accurate standalone model but the one that preserves latency, memory, and energy headroom.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_2_TinyML_Random_Forest_ESP32\\Markdown\\05_2026_Resource-aware edge deployment and trade-off analysis of TinyML classifiers for IoT health monitorin.md"
+      }
+    ]
+  },
+  "Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL": {
+    "name": "Klaster 3: Ekstraksi Fitur, Sliding Window, & Reduksi False Alarm (ADL)",
+    "focus": "Penentuan parameter sliding window (2-3s, 50% overlap, 50 Hz sampling rate), ekstraksi fitur statistik (SVM/Signal Vector Magnitude, RMS, MCR, Kurtosis, Skewness, Variance), dan mitigasi false alarm dari Activities of Daily Living (ADL: makan, berjalan, bertepuk tangan).",
+    "papers": [
+      {
+        "title": "A Novel Feature Set Extraction Based on Accelerometer Sensor Data for Improving the Fall Detection System",
+        "year": 2022,
+        "authors": [
+          "Hong-Lam Le",
+          "Duc-Nhan Nguyen",
+          "Thi-Hau Nguyen",
+          "Ha-Nam Nguyen"
+        ],
+        "venue": "Electronics",
+        "doi": "https://doi.org/10.3390/electronics11071030",
+        "oa_url": "https://www.mdpi.com/2079-9292/11/7/1030/pdf?version=1648200016",
+        "abstract": "Because falls are the second leading cause of injury deaths, especially in the elderly according to WHO statistics, there have been a lot of studies on developing a fall detection and warning system. Many approaches based on wearable sensors, cameras, Infrared sensors, radar, etc., have been proposed to detect falls efficiently. However, it still faces many challenges due to noise and no clear definition of fall activities. This paper proposes a new way to extract 44 features based on the time domain, frequency domain, and Hjorth parameters to deal with this. The effect of the proposed feature set has been evaluated on several classification algorithms, such as SVM, k-NN, ANN, J48, and RF. Our method achieves a relative high performance (F1-Score metric) in detecting fall and non-fall activities, i.e., 95.23% (falls), 99.11% (non-falls), and 96.16% (falls), 99.90% (non-falls) for the MobileAct 2.0 and UP-Fall datasets, respectively.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL\\Markdown\\01_2022_A Novel Feature Set Extraction Based on Accelerometer Sensor Data for Improving the Fall Detection S.md"
+      },
+      {
+        "title": "A Feature Engineering Method for Smartphone-Based Fall Detection",
+        "year": 2025,
+        "authors": [
+          "Pengyu Guo",
+          "Masaya Nakayama"
+        ],
+        "venue": "Sensors",
+        "doi": "https://doi.org/10.3390/s25206500",
+        "oa_url": "https://www.mdpi.com/1424-8220/25/20/6500/pdf?version=1761053431",
+        "abstract": "A fall is defined as an event in which a person inadvertently comes to rest on the ground, floor, or another lower level. It is the second leading cause of unintentional death worldwide, with the elderly population (aged 65 and above) at the highest risk. In addition to preventing falls, timely and accurate detection is crucial to enable effective treatment and reduce potential injury. In this work, we propose a smartphone-based method for fall detection, employing K-Nearest Neighbors (KNN) and Support Vector Machine (SVM) classifiers to predict fall events from accelerometer data. We evaluated the proposed method on two simulated datasets (UniMiB SHAR and MobiAct) and one real-world fall dataset (FARSEEING), performing both same-dataset and cross-dataset evaluations. In same-dataset evaluation on UniMiB SHAR, the method achieved an average accuracy of 98.45% in Leave-One-Subject-Out (LOSO) cross-validation. On MobiAct, it achieved a peak accuracy of 99.89% using KNN. In cross-dataset validation on MobiAct, the highest accuracy reached 96.41%, while on FARSEEING, the method achieved 95.35% sensitivity and 98.12% specificity. SHAP-based interpretability analysis was further conducted to identify the most influential features and provide insights into the model's decision-making process. These results demonstrate the high effectiveness, robustness, and transparency of the proposed approach in detecting falls across different datasets and scenarios.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL\\Markdown\\02_2025_A Feature Engineering Method for Smartphone-Based Fall Detection.md"
+      },
+      {
+        "title": "Event-Centered Data Segmentation in Accelerometer-Based Fall Detection Algorithms",
+        "year": 2021,
+        "authors": [
+          "Goran Šeketa",
+          "Lovro Pavlaković",
+          "Dominik Džaja",
+          "Igor Lacković",
+          "Ratko Magjarević"
+        ],
+        "venue": "Sensors",
+        "doi": "https://doi.org/10.3390/s21134335",
+        "oa_url": "https://www.mdpi.com/1424-8220/21/13/4335/pdf?version=1624607445",
+        "abstract": "Automatic fall detection systems ensure that elderly people get prompt assistance after experiencing a fall. Fall detection systems based on accelerometer measurements are widely used because of their portability and low cost. However, the ability of these systems to differentiate falls from Activities of Daily Living (ADL) is still not acceptable for everyday usage at a large scale. More work is still needed to raise the performance of these systems. In our research, we explored an essential but often neglected part of accelerometer-based fall detection systems-data segmentation. The aim of our work was to explore how different configurations of windows for data segmentation affect detection accuracy of a fall detection system and to find the best-performing configuration. For this purpose, we designed a testing environment for fall detection based on a Support Vector Machine (SVM) classifier and evaluated the influence of the number and duration of segmentation windows on the overall detection accuracy. Thereby, an event-centered approach for data segmentation was used, where windows are set relative to a potential fall event detected in the input data. Fall and ADL data records from three publicly available datasets were utilized for the test. We found that a configuration of three sequential windows (pre-impact, impact, and post-impact) provided the highest detection accuracy on all three datasets. The best results were obtained when either a 0.5 s or a 1 s long impact window was used, combined with pre- and post-impact windows of 3.5 s or 3.75 s.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL\\Markdown\\03_2021_Event-Centered Data Segmentation in Accelerometer-Based Fall Detection Algorithms.md"
+      },
+      {
+        "title": "A Class-Imbalanced Deep Learning Fall Detection Algorithm Using Wearable Sensors",
+        "year": 2021,
+        "authors": [
+          "Jing Zhang",
+          "Jia Li",
+          "Weibing Wang"
+        ],
+        "venue": "Sensors",
+        "doi": "https://doi.org/10.3390/s21196511",
+        "oa_url": "https://www.mdpi.com/1424-8220/21/19/6511/pdf?version=1637127784",
+        "abstract": "Falling represents one of the most serious health risks for elderly people; it may cause irreversible injuries if the individual cannot obtain timely treatment after the fall happens. Therefore, timely and accurate fall detection algorithm research is extremely important. Recently, a number of researchers have focused on fall detection and made many achievements, and most of the relevant algorithm studies are based on ideal class-balanced datasets. However, in real-life applications, the possibilities of Activities of Daily Life (ADL) and fall events are different, so the data collected by wearable sensors suffers from class imbalance. The previously developed algorithms perform poorly on class-imbalanced data. In order to solve this problem, this paper proposes an algorithm that can effectively distinguish falls from a large amount of ADL signals. Compared with the state-of-the-art fall detection algorithms, the proposed method can achieve the highest score in multiple evaluation methods, with a sensitivity of 99.33%, a specificity of 91.86%, an F-Score of 98.44% and an AUC of 98.35%. The results prove that the proposed algorithm is effective on class-imbalanced data and more suitable for real-life application compared to previous works.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL\\Markdown\\04_2021_A Class-Imbalanced Deep Learning Fall Detection Algorithm Using Wearable Sensors.md"
+      },
+      {
+        "title": "A Novel Embedded Deep Learning Wearable Sensor for Fall Detection",
+        "year": 2024,
+        "authors": [
+          "Sara Campanella",
+          "Alaa Alnasef",
+          "Laura Falaschetti",
+          "Alberto Belli",
+          "Paola Pierleoni"
+        ],
+        "venue": "IEEE Sensors Journal",
+        "doi": "https://doi.org/10.1109/jsen.2024.3375603",
+        "oa_url": "https://ieeexplore.ieee.org/ielx7/7361/4427201/10473668.pdf",
+        "abstract": "Falls and their aftermath pose significant healthcare challenges, impacting individuals across various age groups and occupational backgrounds. These incidents detrimentally affect functional mobility and overall quality of life, necessitating a comprehensive approach to fall detection systems in diverse populations. Therefore, wearable devices are necessary to continuously monitor activities. This work introduces a novel deep-learning model specifically optimized for edge devices capable of detecting falls. The wearable sensor integrates a pressure sensor, a three-axis gyroscope, and a three-axis accelerometer. The developed system works in real-time with the dual objective of identifying the activities carried out and classifying them as falls or daily life activities. We evaluated this approach using both our self-collected dataset and a publicly available one (SisFall). Furthermore, in our dataset, we also introduced the syncope between falls that the sensor must be able to detect. Results demonstrate that while maintaining low-cost, low-complexity of the model, low-power consumption, and high-speed data processing, combining usage of the three sensors and deep learning algorithm allows to obtain an accuracy of 99.38%, and inference time of 25 ms.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_3_Ekstraksi_Fitur_Sliding_Window_ADL\\Markdown\\05_2024_A Novel Embedded Deep Learning Wearable Sensor for Fall Detection.md"
+      }
+    ]
+  },
+  "Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex": {
+    "name": "Klaster 4: Multi-Sensor Fusion (MPU6050 + MAX30102 / Flex Sensor)",
+    "focus": "Multi-sensor fusion sinyal inersial (MPU6050 6-DOF IMU) dan optik (MAX30102 PPG untuk detak jantung/takikardia panik & SpO2) atau flex sensor gestur jari, serta strategi penanganan motion artifact pada pembacaan denyut nadi pergelangan tangan.",
+    "papers": [
+      {
+        "title": "IoT-Based Wearable System for Early Detection of Parkinson\\'s Disease Symptoms Using ESP32, MPU6050, and MAX30102",
+        "year": 2026,
+        "authors": [
+          "Amay Shukla"
+        ],
+        "venue": "International Journal for Research in Applied Science and Engineering Technology",
+        "doi": "https://doi.org/10.22214/ijraset.2026.79423",
+        "oa_url": "https://doi.org/10.22214/ijraset.2026.79423",
+        "abstract": "Parkinson's disease is a progressive neurological disorder whose earliest motor symptom — a resting hand tremor — is frequently missed during short clinical appointments. This paper presents a low-cost, IoT-based wearable monitoring device designed to continuously detect and log physiological signals that may indicate early neurological abnormality. The system integrates an MPU6050 inertial measurement unit for three-axis motion and tremor analysis, and a MAX30102 optical pulse oximeter for heart rate (BPM) and blood oxygen saturation (SpO2) measurement. An ESP32 microcontroller performs on-device signal processing using a variance-threshold algorithm that identifies repetitive oscillation patterns in the clinically significant 3–6 Hz Parkinson's tremor frequency range. Multi-parameter decision logic combines motion and cardiac data before raising an alert, reducing false positives. Sensor data is transmitted wirelessly over Wi-Fi to a cloud dashboard accessible by doctors and caregivers. Local feedback is delivered via an OLED display and audible buzzer. Testing confirmed correct alert behaviour across all operating states, with approximately 98% Wi-Fi packet delivery rate and 8–10 hours of battery life per charge. The device is intended as a screening and monitoring tool — not a clinical diagnostic instrument — and all flagged results must be reviewed by a qualified medical professional.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\PDF\\01_2026_IoT-Based Wearable System for Early Detection of Parkinson's Disease Symptoms Using ESP32, MPU6050, .pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\Markdown\\01_2026_IoT-Based Wearable System for Early Detection of Parkinson's Disease Symptoms Using ESP32, MPU6050, .md"
+      },
+      {
+        "title": "AI Powered Wearable System For Pre Stroke Detection",
+        "year": 2026,
+        "authors": [
+          "Pavithra S",
+          "Shanmugavalli S",
+          "Aaisha B",
+          "M. Sowmiya",
+          "Priyadharshini B"
+        ],
+        "venue": "International Journal of Drug Delivery Technology",
+        "doi": "https://doi.org/10.25258/ijddt.16.27s.10",
+        "oa_url": "https://doi.org/10.25258/ijddt.16.27s.10",
+        "abstract": "This paper introduces a novel, intelligent wearable platform designed for the early prognostication of cerebrovascular accident (stroke) risk through continuous, multi-parametric physiological surveillance. The system is conceptualized to address the significant lag time between the onset of pathological physiological changes and clinical diagnosis, a primary factor contributing to the severe morbidity and mortality associated with stroke globally. It employs a synergistic integration of non-invasive biosensors to concurrently monitor an ensemble of biomarkers, including cardiac electrophysiology (ECG), heart rate variability (HRV), peripheral capillary oxygen saturation (SpO₂), and tri-axial kinematic data for postural analysis. At its core, an optimized embeddedsystem-on-chip (SoC) performs real-time digital signal processing—encompassing adaptive filtering, feature extraction, and spectral analysis—followed by the application of a lightweight anomaly detection algorithm to identify deviations indicative of ischemic or hemorrhagic precursors. The device's architecture prioritizes a low-power profile and ergonomic design to facilitate seamless, long-term deployment in unstructured, ambulatory settings. Preliminary validation involving controlled pilot studies demonstrates a high degree of accuracy in classifying pre-stroke events, underscoring the system's potential as a robust tool for pre- emptive healthcare. By enabling timely medical intervention, this technology aims to substantially reduce diagnostic latency, improve patient outcomes, and decrease the overall burden on healthcare infrastructure.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\PDF\\02_2026_AI Powered Wearable System For Pre Stroke Detection.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\Markdown\\02_2026_AI Powered Wearable System For Pre Stroke Detection.md"
+      },
+      {
+        "title": "A Review on IoT-Based Smart Health Monitoring Band using ESP32 and MQTT",
+        "year": 2026,
+        "authors": [],
+        "venue": "International Research Journal of Modernization in Engineering Technology and Science",
+        "doi": "https://doi.org/10.56726/irjmets90325",
+        "oa_url": "https://doi.org/10.56726/irjmets90325",
+        "abstract": "The rapid expansion of the Internet of Medical Things (IoMT) and an aging global population have necessitated a critical paradigm shift toward continuous, remote patient monitoring and proactive healthcare management.Conventional clinical monitoring systems and standalone wearable devices are inherently constrained by their exorbitant costs, spatial immobility, and reliance on episodic data acquisition, which frequently fail to detect transient physiological anomalies or critical safety events such as accidental falls in ambulatory settings.In response to these critical limitations, the technological landscape has evolved toward highly integrated, lowpower wearable architectures, leveraging advanced microcontrollers such as the ESP32 in synergy with precision biosensors (e.g., MAX30102 for photoplethysmography, DS18B20 for thermometry) and inertial measurement units (e.g., MPU6050).A comparative evaluation of contemporary literature reveals that while early iterations relied heavily on power-intensive HTTP networks or range-restricted Bluetooth Low Energy (BLE), modern state-of-the-art systems predominantly utilize the lightweight Message Queuing Telemetry Transport (MQTT) protocol, offering superior bandwidth efficiency, sub-second latency, and extended battery longevity for continuous data streaming to cloud-based diagnostic dashboards.Despite these advancements, significant research gaps persist within the current literature, particularly concerning the computational mitigation of severe motion artifacts during physical activity, the optimization of deep-sleep power topologies for prolonged Wi-Fi transmission, and the standardization of cryptographic frameworks to secure sensitive electronic health records against decentralized cyber threats.Addressing these unresolved challenges, future research trajectories must prioritize the integration of Edge Artificial Intelligence (TinyML) directly onto resource-constrained embedded systems, thereby transforming passive telemetry bands into autonomous, predictive diagnostic platforms capable of preemptive anomaly detection and localized decision-making without absolute reliance on continuous cloud connectivity.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\PDF\\03_2026_A Review on IoT-Based Smart Health Monitoring Band using ESP32 and MQTT.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\Markdown\\03_2026_A Review on IoT-Based Smart Health Monitoring Band using ESP32 and MQTT.md"
+      },
+      {
+        "title": "Accuracy Assessment of an IoT and Raspberry Pi 4 Based Healthcare Monitoring System",
+        "year": 2026,
+        "authors": [
+          "Amer Farhan Sheet",
+          "Ihsan Abdulazim Thulnoon",
+          "Ziyad Khalaf Farej"
+        ],
+        "venue": "NTU Journal of Engineering and Technology",
+        "doi": "https://doi.org/10.56286/42aesh78",
+        "oa_url": "https://journals.ntu.edu.iq/index.php/NTU-JET/article/download/1898/990",
+        "abstract": "The Internet of Things (IoT) solutions, when it comes to the dynamic domain of healthcare, have gained a lot of attention and interest in recent years because they can transform chronic disease management as well as enhance the quality of life for older adults with multiple medical problems. In this article, to alleviate the constraints, an innovative healthcare monitoring system (IHMS) is proposed using the Raspberry Pi Model B with high-performance Wi-Fi (IEEE 802.11ac). The device includes a plurality of sensors, including an ECG sensor, a pulse oximetry sensor, and a temperature sensor, to provide real-time readings of critical physiological data. Sensor data streams live to a patient’s caregivers so they can react quickly when something goes wrong. The paper is also dedicated to a description of measurement accuracy and reliability by using measurements from the system. The system was tested on a group of fifteen aged individuals and proved to be feasible, very efficient in terms of monitoring physiological parameters, and capable of promptly sending urgent ones. The average accuracy obtained is 98.90% in temperature, 98.40% in heart rate, and 99.40% in SPO2. Therefore, such a proposed system has the potential to greatly enhance service for chronic illness care and well-being among the elderly population and to facilitate the arrangement of health services into an efficient and effective continuum.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\Markdown\\04_2026_Accuracy Assessment of an IoT and Raspberry Pi 4 Based Healthcare Monitoring System.md"
+      },
+      {
+        "title": "AI-Enabled Wearable Glove For Pathological Tremor Monitoring And Controlled Drug Delivery System",
+        "year": 2026,
+        "authors": [
+          "Lakshmi Priya S",
+          "Akshaya Devi S G",
+          "Ooshnara Roshini M",
+          "Sivashree R",
+          "G. Saravanan"
+        ],
+        "venue": "International Journal of Drug Delivery Technology",
+        "doi": "https://doi.org/10.25258/ijddt.16.27s.103",
+        "oa_url": "https://doi.org/10.25258/ijddt.16.27s.103",
+        "abstract": "The smart tremor glove represents a novel iot-based wearable device that can not only detect the shaking of hands but also support in reversing the tremor symptoms of patients with neurological disorders levels such as parkinsons disease and essential tremor. These involuntary, rhythmic movements, can make it difficult for people to do their daily activities such as writing, eating, or holding objects, thereby leading to the decline of their quality of life. This work employs esp32 microcontroller as its main processing unit. An mpu6050 sensor having both an accelerometer and a gyroscope functionalities for tracking hand movement and tremor patterns is supported by max30102 sensor that measures physiological signals such as heart rate and oxygen saturation (spo). The data from sensors are processed by the esp32 in order to detect the abnormal tremors. Once the tremors are detected, the esp32 controller issues a command to a relay module which then supplies power to a coin vibration motor. This vibration acts as a haptic signal to the user which may help in balancing the hand and reducing the tremor effects. The system is powered by a li-ion battery, so the device is portable and suitable for wearable applications",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\PDF\\05_2026_AI-Enabled Wearable Glove For Pathological Tremor Monitoring And Controlled Drug Delivery System.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_4_Multi_Sensor_Fusion_MAX30102_Flex\\Markdown\\05_2026_AI-Enabled Wearable Glove For Pathological Tremor Monitoring And Controlled Drug Delivery System.md"
+      }
+    ]
+  },
+  "Klaster_5_Integrasi_IoT_Firebase_Caregiver": {
+    "name": "Klaster 5: Integrasi IoT, Firebase, & Notifikasi Caregiver",
+    "focus": "Arsitektur konektivitas IoT: pengiriman data peringatan darurat via WiFi/MQTT/HTTP ke Firebase Realtime Database/Firestore, latensi transmisi alert, dan penerusan push notification ke smartphone caregiver.",
+    "papers": [
+      {
+        "title": "IoT‐Based Elderly Health Monitoring System Using Firebase Cloud Computing",
+        "year": 2025,
+        "authors": [
+          "Adhan Efendi",
+          "Muhammad Imam Ammarullah",
+          "Indra Griha Tofik Isa",
+          "Meli Puspita Sari",
+          "Jasmine Nurul Izza"
+        ],
+        "venue": "Health Science Reports",
+        "doi": "https://doi.org/10.1002/hsr2.70498",
+        "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/hsr2.70498",
+        "abstract": "Background and Aims: The increasing elderly population presents significant challenges for healthcare systems, necessitating innovative solutions for continuous health monitoring. This study develops and validates an IoT-based elderly monitoring system designed to enhance the quality of life for elderly people. The system features a robust Android-based user interface integrated with the Firebase cloud platform, ensuring real-time data collection and analysis. In addition, a supervised machine learning technology is implemented to conduct prediction task of the observed user whether in \"stable\" or \"not stable\" condition based on real-time parameter. Methods: The system architecture adopts the IoT layer including physical layer, network layer, and application layer. Device validation is conducted by involving six participants to measure the real-time data of heart-rate, oxygen saturation, and body temperature, then analysed by mean average percentage error (MAPE) to define error rate. A comparative experiment is conducted to define the optimal supervised machine learning model to be deployed into the system by analysing evaluation metrics. Meanwhile, the user satisfaction aspect evaluated by the terms of usability, comfort, security, and effectiveness. Results: IoT-based elderly health monitoring system has been constructed with a MAPE of 0.90% across the parameters: heart-rate (1.68%), oxygen saturation (0.57%), and body temperature (0.44%). In machine learning experiment indicates XGBoost model has the optimal performance based on the evaluation metrics of accuracy and F1 score which generates 0.973 and 0.970, respectively. In user satisfaction aspect based on usability, comfort, security, and effectiveness achieving a high rating of 86.55%. Conclusion: This system offers practical applications for both elderly users and caregivers, enabling real-time monitoring of health conditions. Future enhancements may include integration with artificial intelligence technologies such as machine learning and deep learning to predict health conditions from data patterns, further improving the system's capabilities and effectiveness in elderly care.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\Markdown\\01_2025_IoT‐Based Elderly Health Monitoring System Using Firebase Cloud Computing.md"
+      },
+      {
+        "title": "IoT-Based Smart Walking Assistant for Fall Detection in the Elderly",
+        "year": 2025,
+        "authors": [
+          "Vatinee Sanyod",
+          "Khanittha Saelim",
+          "Kongphope Chaarmat",
+          "Sanya Kuankid"
+        ],
+        "venue": "International Journal of Online and Biomedical Engineering (iJOE)",
+        "doi": "https://doi.org/10.3991/ijoe.v21i06.54443",
+        "oa_url": "https://online-journals.org/index.php/i-joe/article/download/54443/16191",
+        "abstract": "This study introduces the design, development, and evaluation of a smart walking assistant tailored to enhance the mobility, safety, and independence of elderly individuals. The system integrates an ESP32 microcontroller to interface with multiple sensors, including the MAX30102 for monitoring heart rate and blood oxygen saturation, the GY-906 infrared sensor for body temperature measurements, and the MPU6050 accelerometer and gyroscope for precise motion tracking and fall detection. A compact and modular control unit, seamlessly integrated into the walker, enables real-time data collection and wireless transmission using LoRa and Wi-Fi technologies. This connectivity facilitates the delivery of alerts to caregivers through a user-friendly mobile application. Rigorous testing, including simulated fall scenarios and physiological parameter measurements, validated the system’s accuracy, reliability, and responsiveness. The results demonstrated high precision in detecting obstacles, falls, and physiological anomalies, while the system’s integration with IoT-based communication platforms ensures timely intervention. The smart walking assistant offers a comprehensive and effective solution, promoting safety and quality of life for elderly users.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\PDF\\02_2025_IoT-Based Smart Walking Assistant for Fall Detection in the Elderly.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\Markdown\\02_2025_IoT-Based Smart Walking Assistant for Fall Detection in the Elderly.md"
+      },
+      {
+        "title": "IOT Based Health Care Wristband for Elderly People Using ESP32",
+        "year": 2025,
+        "authors": [
+          "J. Vijaya Kumar"
+        ],
+        "venue": "INTERANTIONAL JOURNAL OF SCIENTIFIC RESEARCH IN ENGINEERING AND MANAGEMENT",
+        "doi": "https://doi.org/10.55041/ijsrem45603",
+        "oa_url": "https://ijsrem.com/download/iot-based-health-care-wristband-for-elderly-people-using-esp32/?wpdmdl=49387&refresh=6809e24de757b1745478221",
+        "abstract": "With the increasing elderly population worldwide, there is a growing need for advanced healthcare solutions that offer real-time monitoring and timely medical assistance. This project focuses on the design and implementation of an IoT-based healthcare wristband for elderly people, utilizing the ESP32 microcontroller. The wristband is designed to monitor essential health parameters such as heart rate, body temperature, and physical activity. The system provides real-time data acquisition, analysis, and remote monitoring,enabling caregivers and medical professionals to track the health status of elderly patients from any location. In recent years, the integration of the Internet of Things (IoT) into healthcare systems has brought about transformative solutions for patient monitoring, especially for elderly individuals who often require continuous medical attention. This project presents the development of an IoT based health care wristband designed specifically for elderly people, utilizing the ESP32 microcontroller. The goal is to create a low-cost, compact, and efficient wearable device capable of real-time monitoring of vital health parameters while ensuring ease of use and reliability.The primary goal of this project is to enhance the quality of life for elderly individuals by providing continuous health monitoring and ensuring timely medical attention when needed. Key Words:- IoT, ESP32, WiFi, SMS, GPS, MCU, API, HTTP",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\Markdown\\03_2025_IOT Based Health Care Wristband for Elderly People Using ESP32.md"
+      },
+      {
+        "title": "Smart Wearable IoT untuk Deteksi Jatuh dan Pemantauan Kesehatan Lansia Secara Real-Time",
+        "year": 2026,
+        "authors": [
+          "Hanif Rahman Lubis",
+          "Mhd. Basri"
+        ],
+        "venue": "JOURNAL SAINS STUDENT RESEARCH",
+        "doi": "https://openalex.org/W7221287714",
+        "oa_url": "https://ejurnal.kampusakademik.co.id/index.php/jssr/article/download/12949/10721",
+        "abstract": "The elderly population is highly susceptible to fall risks and requires continuous health monitoring. Limitations in manual monitoring can lead to delayed emergency responses, while existing visual monitoring solutions often present privacy concerns. This study aims to design and develop an Internet of Things (IoT)-based smart wearable device to detect fall events and monitor heart rate in real time without utilizing visual cameras, thereby safeguarding user privacy. The system employs an ESP32-C3 microcontroller as the central control unit, integrated with an MPU6050 sensor to measure tri-axial acceleration and orientation changes for fall detection, alongside a MAX30102 sensor for heart rate monitoring in beats per minute (BPM). Processed sensor data is transmitted via Wi-Fi to Firebase Realtime Database for web dashboard display, while emergency fall alerts trigger an on-board buzzer and automated Telegram notifications to caregivers. Experimental results across 60 trial activities demonstrate that the MPU6050 sensor accurately classifies 58 activities with an average fall detection latency of 3.93 seconds. The MAX30102 sensor requires an average stabilization time of 8.8 seconds for reliable BPM readings, and Telegram alerts achieve an average response latency of 4.2 seconds. The developed system effectively enhances elderly safety, maintains user privacy, and accelerates emergency response intervention. Populasi lansia sangat rentan terhadap risiko jatuh dan membutuhkan pemantauan kesehatan secara terus-menerus. Keterbatasan pemantauan manual dapat menyebabkan keterlambatan penanganan darurat, sementara solusi pemantauan visual sering kali menimbulkan masalah privasi. Penelitian ini bertujuan untuk merancang dan mengembangkan perangkat wearable cerdas berbasis Internet of Things (IoT) untuk mendeteksi kejadian jatuh dan memantau detak jantung secara real-time tanpa menggunakan kamera visual sehingga privasi pengguna tetap terjaga. Sistem ini menggunakan mikrokontroler ESP32-C3 sebagai unit kontrol utama yang diintegrasikan dengan sensor MPU6050 untuk mengukur percepatan tri-aksial dan perubahan orientasi guna mendeteksi jatuh, serta sensor MAX30102 untuk pemantauan detak jantung dalam satuan beats per minute (BPM). Data sensor yang diproses dikirimkan melalui Wi-Fi ke Firebase Realtime Database untuk ditampilkan pada dashboard web, sedangkan peringatan darurat saat jatuh akan mengaktifkan buzzer dan notifikasi Telegram otomatis kepada pengasuh. Hasil pengujian pada 60 skenario aktivitas menunjukkan bahwa sensor MPU6050 berhasil mengklasifikasikan 58 aktivitas dengan rata-rata latensi deteksi jatuh sebesar 3,93 detik. Sensor MAX30102 membutuhkan waktu stabilisasi rata-rata 8,8 detik untuk pembacaan BPM yang stabil, dan peringatan Telegram mencapai latensi respons rata-rata 4,2 detik. Sistem yang dikembangkan ini efektif meningkatkan keselamatan lansia, menjaga privasi, dan mempercepat intervensi penanganan darurat.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\PDF\\04_2026_Smart Wearable IoT untuk Deteksi Jatuh dan Pemantauan Kesehatan Lansia Secara Real-Time.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\Markdown\\04_2026_Smart Wearable IoT untuk Deteksi Jatuh dan Pemantauan Kesehatan Lansia Secara Real-Time.md"
+      },
+      {
+        "title": "ESP32-Based IoT Framework for Real-Time Remote Patient Monitoring: Design and Impact",
+        "year": 2026,
+        "authors": [
+          "M. Rajathi",
+          "Mohan Kumar K"
+        ],
+        "venue": "Advanced International Journal for Research",
+        "doi": "https://doi.org/10.63363/aijfr.2026.v07i01.3112",
+        "oa_url": "https://aijfr.com/papers/2026/1/3112.pdf",
+        "abstract": "This research article presents the design and implementation of an Internet of Things (IoT)-based healthcare monitoring system utilizing ESP32 sensors. The system aims to provide real-time, continuous health monitoring by integrating wearable and ambient sensors with wireless communication capabilities enabled by the ESP32 microcontroller. Key physiological parameters such as heart rate, body temperature, and blood oxygen levels are collected, processed, and transmitted securely to a cloud platform for remote access by healthcare providers. The system emphasizes low power consumption, cost-effectiveness, and scalability, making it suitable for both clinical and home-care environments. Experimental results demonstrate the system's reliability, accuracy, and responsiveness, highlighting its potential to enhance patient care, enable early diagnosis, and reduce hospital visits. This work contributes to the growing field of smart healthcare by leveraging IoT technologies to bridge the gap between patients and medical professionals.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\PDF\\05_2026_ESP32-Based IoT Framework for Real-Time Remote Patient Monitoring Design and Impact.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_5_Integrasi_IoT_Firebase_Caregiver\\Markdown\\05_2026_ESP32-Based IoT Framework for Real-Time Remote Patient Monitoring Design and Impact.md"
+      }
+    ]
+  },
+  "Klaster_6_Fitur_Suara_STT_Audio_Feedback": {
+    "name": "Klaster 6: (Opsional) Fitur Ekspansi Suara / STT & Audio Feedback",
+    "focus": "Ekspansi fitur audio: Keyword Spotting (KWS), TinyML pengenalan kata kunci darurat ('Tolong' / 'Help') pada mikrofon I2S ESP32-S3, serta audio/buzzer feedback konfirmasi alert darurat.",
+    "papers": [
+      {
+        "title": "Nexus: A Low-Cost Wearable AI Health Companion Using IoT, Edge AI and a Smartphone-Hosted Voice Assistant",
+        "year": 2026,
+        "authors": [
+          "Suyog Danole",
+          "Ayan Mulla",
+          "Sarvesh Teli",
+          "Arif Shirgave",
+          "Sairaj Salunkhe"
+        ],
+        "venue": "International Journal for Research in Applied Science and Engineering Technology",
+        "doi": "https://doi.org/10.22214/ijraset.2026.85437",
+        "oa_url": "https://doi.org/10.22214/ijraset.2026.85437",
+        "abstract": "Elderly people and patients with long-term conditions benefit from continuous, low-effort monitoring, yet most commercial health wearables are costly, screen-dependent and passive. This paper presents Nexus (Neural-Enabled eXtended User Support), a low-cost wearable AI health companion built on a three-layer IoT architecture. A wrist-worn ESP32-S3 device senses heart rate, blood oxygen saturation, motion and skin temperature and runs lightweight edge AI. A smartphone acts as the AI gateway and hosts speech recognition, a conversational assistant and speech synthesis. A caregiver interface provides status, alerts, history and location. The device has no display; it uses two-way voice, haptic feedback and a single SOS/TALK button. A proactive, health-focused assistant with short-term memory explains alerts in simple language, and a graded alert scheme with an emergency verification step reduces false alarms before caregivers are notified. The paper describes the requirements, hardware, software and AI design, privacy considerations, development methodology and a planned evaluation. Nexus is a health-monitoring and assistance prototype and is not a medical diagnostic device.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\PDF\\01_2026_Nexus A Low-Cost Wearable AI Health Companion Using IoT, Edge AI and a Smartphone-Hosted Voice Assis.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\Markdown\\01_2026_Nexus A Low-Cost Wearable AI Health Companion Using IoT, Edge AI and a Smartphone-Hosted Voice Assis.md"
+      },
+      {
+        "title": "An Overview of the Implications of Artificial Intelligence (AI) in Sixth Generation (6G) Communication Network",
+        "year": 2023,
+        "authors": [
+          "Asif Raihan"
+        ],
+        "venue": "Research Briefs on Information and Communication Technology Evolution",
+        "doi": "https://doi.org/10.64799/rebicte.v9.8",
+        "oa_url": "https://doi.org/10.64799/rebicte.v9.8",
+        "abstract": "The 6G communication network is anticipated to be a cutting-edge next-generation communication network that will enhance the value of the intelligent Internet of Things (IoT). The emergence of many domains within artificial intelligence (AI) has paved the way for significant opportunities in the development of 6G technology. These opportunities include the enhancement of human intelligence, the integration of various devices and systems through the Internet of Everything (IoE), improvements in the quality of experiences, and enhancements in the overall quality of life. The integration of AI and 6G networking technology is anticipated to bring about a transformative shift, transitioning from a focus on interconnected devices to a paradigm centered around interconnected intelligent systems. This article provides an overview of the extent to which AI is poised to revolutionize 6G networking technologies. This study is primarily concerned with the implementation of appropriate applications that address human needs and challenges. Furthermore, this research highlights the significance of technology that has the potential to provide value for emerging technologies.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\Markdown\\02_2023_An Overview of the Implications of Artificial Intelligence (AI) in Sixth Generation (6G) Communicati.md"
+      },
+      {
+        "title": "Mood Mate: A Review of Multimodal AI in Real-Time Mental Health Monitoring",
+        "year": 2025,
+        "authors": [
+          "Sakshi Bhaganagare",
+          "Shravani Chavan",
+          "Sonali Gavali",
+          "Vaibhav Vilas Godase"
+        ],
+        "venue": "International Journal of Advanced Research in Science Communication and Technology",
+        "doi": "https://doi.org/10.48175/ijarsct-29517",
+        "oa_url": "https://doi.org/10.48175/ijarsct-29517",
+        "abstract": "The global mental health crisis continues to escalate, with more than one billion people living with mental health disorders as of 2025, according to the World Health Organization (WHO). Mental disorders remain a leading cause of disability worldwide, with depressive disorders affecting approximately 4% of the global population, anxiety disorders impacting 4.4%, and other conditions like bipolar disorder (0.5%) and schizophrenia (0.3%) contributing to the burden. Projections indicate sustained growth in prevalence, exacerbated by factors such as economic instability, social isolation, and limited access to care, particularly in underserved regions. Traditional mental health services are strained, with significant gaps in treatment—most individuals with mental disorders remain underserved, highlighting the need for innovative, scalable solutions. This review introduces Mood Mate, a proposed multimodal AI system designed to advance real-time mental health monitoring by integrating diverse data sources, including voice biomarkers for tone analysis, facial expressions via convolutional neural networks (CNNs), physiological signals from wearables (e.g., heart rate variability and remote photo plethysmography), and textual inputs through natural language processing (NLP). Mood Mate enables continuous mood tracking, early detection of crises such as depression or anxiety episodes, and delivery of personalized interventions like cognitive behavioral therapy (CBT) prompts or mindfulness exercises. Building on recent advancements in AI mental health applications from 2023 to 2025—such as Wysa for chatbot-based support, Youper for mood logging and therapy, and emerging tools like Therabot or ChatGPT-integrated counseling—we synthesize evidence demonstrating detection accuracies ranging from 70% to 90% in multimodal systems. For instance, multimodal deep learning models have achieved up to 89.3% accuracy in identifying early signs of mental health crises, outperforming unimodal approaches by leveraging fused data for more robust predictions.",
+        "source": "OpenAlex",
+        "pdf_saved": true,
+        "pdf_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\PDF\\03_2025_Mood Mate A Review of Multimodal AI in Real-Time Mental Health Monitoring.pdf",
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\Markdown\\03_2025_Mood Mate A Review of Multimodal AI in Real-Time Mental Health Monitoring.md"
+      },
+      {
+        "title": "Exploring the Full Potentials of IoT for Better Financial Growth and Stability: A Comprehensive Survey",
+        "year": 2023,
+        "authors": [
+          "Hanane Allioui",
+          "Youssef Mourdi"
+        ],
+        "venue": "Sensors",
+        "doi": "https://doi.org/10.3390/s23198015",
+        "oa_url": "https://www.mdpi.com/1424-8220/23/19/8015/pdf?version=1695349202",
+        "abstract": "Cutting-edge technologies, with a special emphasis on the Internet of Things (IoT), tend to operate as game changers, generating enormous alterations in both traditional and modern enterprises. Understanding multiple uses of IoT has become vital for effective financial management, given the ever-changing nature of organizations and the technological disruptions that come with this paradigm change. IoT has proven to be a powerful tool for improving operational efficiency, decision-making processes, overall productivity, and data management. As a result of the continuously expanding data volume, there is an increasing demand for a robust IT system capable of adeptly handling all enterprise processes. Consequently, businesses must develop suitable IoT architectures that can efficiently address these continually evolving requirements. This research adopts an incremental explanatory approach, guided by the principles of the Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA). A rigorous examination of 84 research papers has allowed us to delve deeply into the current landscape of IoT research. This research aims to provide a complete and cohesive overview of the existing body of knowledge on IoT. This is accomplished by combining a rigorous empirical approach to categorization with ideas from specialized literature in the IoT sector. This study actively contributes to the ongoing conversation around IoT by recognizing and critically examining current difficulties. This, consequently, opens new research possibilities and promotes future developments in this ever-changing sector.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\Markdown\\04_2023_Exploring the Full Potentials of IoT for Better Financial Growth and Stability A Comprehensive Surve.md"
+      },
+      {
+        "title": "Empathetic AI on the Wrist: A Voice-First, Edge-Computed Wearable for Proactive Elder Care",
+        "year": 2025,
+        "authors": [
+          "Praveen Kumar Savaram"
+        ],
+        "venue": "TechRxiv",
+        "doi": "https://doi.org/10.36227/techrxiv.175424249.91058155/v1",
+        "oa_url": "https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.175424249.91058155",
+        "abstract": "The rapid advancement of wearable technology has introduced an array of smartwatches, rings, and health trackers, yet most remain fundamentally limited in serving elderly populations. These mainstream devices are often closed systems, offering opaque sensor operations, requiring frequent smartphone connectivity, and presenting feedback through complex screens and apps. As a result, many older adults-those most in need of proactive monitoring-find such tools inaccessible, unrelatable, and quickly abandon them. This paper presents a transformative vision: a voice-first, multi-sensory wearable health device-referred to as the Empathetic AI Band-engineered from the ground up for realtime, predictive, and proactive elder care. Developed under the Ayuvanaa initiative, this wearable merges advanced edge AI processing with human-centered design, modular hardware architecture, and transparent sensor exposure. Unlike conventional devices, the Empathetic AI Band offers rich, contextual insights through an empathetic voice assistant that guides the user without requiring screens, apps, or manual inputs-bridging the digital divide for elderly users. At its core, the device integrates over 14 biomedical and environmental sensors-including PPG, GSR, hydration, SpO2, respiration, temperature, motion, and UV-enabling continuous health monitoring. Embedded AI models, optimized for edge inference, detect health anomalies, stress states, and emotional shifts in real-time. Based on these insights, the onboard voice assistant communicates timely, natural-language prompts to the user, such as hydration reminders, breathing exercises during elevated stress, or personalized encouragement based on daily activity. All feedback is delivered in the user's preferred language, using a calm and reassuring tone. This paper argues that true elder-focused innovation must go beyond numerical outputs or reactive alerts-it must embody proactive empathy. Our proposed system is designed not only to detect issues but to support emotional well-being, encourage adherence, and reduce healthcare friction through transparency, trust, and companionship. It also supports modular enhancements like non-invasive glucose tracking or cognitive monitoring, and ensures data privacy by running all AI inference locally without dependence on cloud processing. Through a convergence of inclusive design, AI-driven context awareness, and ambient voice feedback, the Empathetic AI Band introduces a new paradigm in eldercare-where technology listens, understands, and gently guides. Our pilot study with elderly users validates its potential to improve engagement, early intervention, and independent living outcomes. This work contributes to the global goal of healthy aging by empowering seniors to live safely, confidently, and with dignity in their own homes.",
+        "source": "OpenAlex",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_6_Fitur_Suara_STT_Audio_Feedback\\Markdown\\05_2025_Empathetic AI on the Wrist A Voice-First, Edge-Computed Wearable for Proactive Elder Care.md"
+      }
+    ]
+  },
+  "Klaster_7_Jurnal_Nasional_Indonesia_SINTA": {
+    "name": "Klaster 7: Keyword Bahasa Indonesia (Jurnal Nasional SINTA, Garuda, & Scholar ID)",
+    "focus": "Referensi pembanding penelitian lokal, rujukan regulasi/kebutuhan di Indonesia, serta justifikasi state-of-the-art nasional untuk skripsi/laporan tugas akhir.",
+    "papers": [
+      {
+        "title": "Deteksi Gempa Bumi Real-Time Menggunakan Sensor MPU6050 dengan Koreksi Drift Adaptif dan Sistem ESP32 Berbasis IoT",
+        "year": 2026,
+        "authors": [
+          "Nadila Gusriyani",
+          "Maria Evita"
+        ],
+        "venue": "Jurnal Fisika Unand",
+        "doi": "https://doi.org/10.25077/jfu.15.4.414-422.2026",
+        "oa_url": "",
+        "abstract": "<jats:p>Indonesia terletak pada wilayah paling aktif secara seismik di dunia, sehingga membuat kebutuhan mendesak akan sistem pemantauan gempa bumi yang terjangkau. Penelitian ini menyajikan sistem deteksi peristiwa gempa bumi secara real-time berdasarkan akselerometer MEMS (Micro-Electro-Mechanical System) MPU6050 dengan koreksi drift adaptif yang diintegrasikan dengan mikrokontroler ESP32 dan transmisi data berbasis Internet of Things (IoT). Sistem mengakuisisi percepatan tanah tiga sumbu secara real-time, kompensasi bias adaptif, penekanan drift menggunakan pembaruan kecepatan nol (Zero-Velocity Update/ZUPT), dan deteksi peristiwa berdasarkan ambang batas adaptif relatif terhadap garis dasar noise lokal. Parameter seismik utama, termasuk Percepatan Tanah Puncak (Peak Ground Acceleration/PGA) dan Kecepatan Tanah Puncak (Peak Ground Velocity/PGV), dihitung secara real-time, sementara karakterisasi domain frekuensi dilakukan secara luring menggunakan analisis Fast Fourier Transform (FFT). Pengukuran stasioner jangka panjang selama sekitar 60 menit menunjukkan karakteristik noise yang stabil, dengan tingkat noise RMS (root mean square) sebesar 0,0067 m/s², 0,0039 m/s², dan 0,0027 m/s² pada sumbu X, Y, dan Z. Sistem menunjukkan stabilitas garis dasar yang sangat baik, dengan variasi PGA hanya 0,7% dan laju drift terukur sebesar 0,00088 m/s² per jam. Validasi komparatif terhadap sensor referensi berbasis smartphone menunjukkan tingkat deteksi peristiwa 100%, dan kesalahan estimasi PGA ±2%, dengan linearitas melebihi koefisien determinasi 0,99.\r\n \r\nKata Kunci: akselerometer, ESP32, kecepatan tanah puncak, MPU6050, percepatan tanah puncak</jats:p>",
+        "source": "CrossRef",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_7_Jurnal_Nasional_Indonesia_SINTA\\Markdown\\01_2026_Deteksi Gempa Bumi Real-Time Menggunakan Sensor MPU6050 dengan Koreksi Drift Adaptif dan Sistem ESP3.md"
+      },
+      {
+        "title": "OPTIMALISASI KUALITAS HIDUP LANSIA DENGAN PROGRAM DETEKSI DINI RISIKO JATUH DAN GANGGUAN KOGNITIF DI POSYANDU LANSIA",
+        "year": 2025,
+        "authors": [
+          "Risa Kusuma Anggraeni",
+          "Avliya Quratul Marjan",
+          "Fidyatul Nazhira",
+          "Chandra Tri Wahyudi"
+        ],
+        "venue": "Jurnal Abdi Insani",
+        "doi": "https://doi.org/10.29303/abdiinsani.v12i12.3004",
+        "oa_url": "",
+        "abstract": "<jats:p>Older adults are a vulnerable group with a high risk of falls due to decreased muscle strength, balance impairment, and cognitive decline. Falls often lead to serious injuries, reduced independence, and diminished quality of life. Therefore, promotive and preventive interventions at the community level are urgently needed. This community service program aimed to improve older adults’ knowledge and skills in preventing falls through health education and balance exercises supported by digital technology. The method included initial health screening, interactive counseling on fall risk and cognitive decline, practical sessions of balance exercises, and knowledge evaluation using pre- and post-tests. The results showed a significant improvement in knowledge, with participants’ understanding increasing from 60% before the program to 95% afterward. Moreover, participants became more confident in performing balance exercises, supported by digital media in the form of tutorial videos accessible at home. The involvement of community health cadres played a crucial role in ensuring program sustainability and enhancing participant engagement. This program demonstrates that community-based interventions combined with digital technology are effective in improving knowledge and skills among older adults and have the potential to reduce fall risk.</jats:p>",
+        "source": "CrossRef",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_7_Jurnal_Nasional_Indonesia_SINTA\\Markdown\\02_2025_OPTIMALISASI KUALITAS HIDUP LANSIA DENGAN PROGRAM DETEKSI DINI RISIKO JATUH DAN GANGGUAN KOGNITIF DI.md"
+      },
+      {
+        "title": "SISTEM DETEKSI JATUH UNTUK MENINGKATKAN KESELAMATAN LANSIA MENGGUNAKAN SENSOR MPU-6500 DAN ESP32 BERBASIS IOT",
+        "year": 2026,
+        "authors": [
+          "Ravi Bimantara",
+          "Agung Kridoyono",
+          "Mochamad Sidqon",
+          "Anton Breva Yunanda",
+          "Istantyo Yuwono"
+        ],
+        "venue": "Informatik : Jurnal Ilmu Komputer",
+        "doi": "https://doi.org/10.52958/iftk.v22i2.11961",
+        "oa_url": "",
+        "abstract": "<jats:p>Kejatuhan merupakan salah satu risiko utama yang mengancam keselamatan lansia karena dapat menyebabkan cedera serius hingga kematian. Untuk mengurangi dampak tersebut, penelitian ini mengembangkan sistem deteksi kejatuhan berbasis Internet of Things (IoT) menggunakan sensor MPU-6500 dan mikrokontroler ESP32. Sistem dirancang portabel dan dipasang di saku pengguna untuk mendeteksi pola gerakan abnormal melalui pengolahan data akselerasi dan orientasi tubuh. Metodologi penelitian mencakup analisis kebutuhan perangkat keras dan lunak, perancangan algoritma deteksi kejatuhan berbasis nilai sum vector dan sudut orientasi, serta integrasi dengan Telegram bot sebagai media notifikasi real-time. Sistem memberikan peringatan melalui alarm lokal, sirene eksternal, dan pesan otomatis ke ponsel pengasuh atau keluarga. Hasil implementasi menunjukkan bahwa sistem mampu mendeteksi kejatuhan dengan respons yang cepat, akurat, dan hemat daya, sehingga berpotensi menjadi solusi praktis dan terjangkau untuk meningkatkan keselamatan lansia.</jats:p>",
+        "source": "CrossRef",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_7_Jurnal_Nasional_Indonesia_SINTA\\Markdown\\03_2026_SISTEM DETEKSI JATUH UNTUK MENINGKATKAN KESELAMATAN LANSIA MENGGUNAKAN SENSOR MPU-6500 DAN ESP32 BER.md"
+      },
+      {
+        "title": "Prototipe Alat Deteksi Banjir Berbasis ESP32, TinyML, dan Notifikasi Telegram",
+        "year": 2026,
+        "authors": [
+          "Laily Rahmad Fauzi",
+          "Imam Suharjo"
+        ],
+        "venue": "Jurnal Kridatama Sains dan Teknologi",
+        "doi": "https://doi.org/10.53863/kst.v8i01.2115",
+        "oa_url": "",
+        "abstract": "<jats:p>Banjir merupakan salah satu bencana hidrometeorologi yang paling sering terjadi di Indonesia dan menimbulkan dampak signifikan terhadap keselamatan, aktivitas ekonomi, serta infrastruktur masyarakat. Untuk mendukung peningkatan kesiapsiagaan, dibutuhkan sistem pemantauan tinggi muka air yang mampu bekerja secara real-time, akurat, dan mudah diimplementasikan di lapangan. Penelitian ini bertujuan mengembangkan prototipe sistem pemantauan dan klasifikasi ketinggian air berbasis Internet of Things (IoT) menggunakan mikrokontroler ESP32, sensor ultrasonik HC-SR04, serta model Tiny Machine Learning (TinyML) yang melakukan inferensi secara lokal pada perangkat (on-device inference). Penentuan kondisi air dilakukan berdasarkan kriteria dan threshold ketinggian air yang ditetapkan pada tahap analisis, yang selanjutnya digunakan sebagai dasar pelabelan data dan pembentukan model TinyML. Sistem dilengkapi indikator LED (hijau, kuning, merah), tampilan OLED I2C 0,96 inci sebagai monitoring lokal, serta notifikasi otomatis melalui aplikasi Telegram sebagai peringatan dini jarak jauh. Metode penelitian menggunakan pendekatan Research and Development (R&amp;D) dengan model ADDIE yang meliputi tahap analisis kebutuhan, perancangan sistem, pengembangan perangkat keras dan perangkat lunak, implementasi prototipe, serta evaluasi kinerja sistem. Hasil pengujian menunjukkan bahwa sistem mampu mengukur ketinggian air secara stabil dengan error maksimum sebesar 0,2 cm. Nilai Mean Absolute Error (MAE) sebesar 0,025 cm diperoleh dari 8 kali percobaan pada rentang pengujian 0–22,5 cm. Sistem berhasil mengklasifikasikan kondisi air ke dalam kategori “Aman”, “Waspada” dan “Banjir” menggunakan model TinyML dengan kesesuaian hasil terhadap skenario uji sebesar 100% pada sepuluh kondisi pengujian. Selain itu, mekanisme notifikasi Telegram bekerja sesuai rancangan, di mana pesan peringatan terkirim pada seluruh transisi status peringatan yang diuji (lima dari lima skenario) dan tidak terkirim pada kondisi aman yang stabil. Temuan ini menunjukkan bahwa integrasi IoT dan TinyML berpotensi mendukung sistem pemantauan dan peringatan dini banjir yang responsif dan efisien, serta sesuai diterapkan sebagai prototipe pada skala kecil hingga menengah seperti lingkungan permukiman rawan genangan dengan perubahan ketinggian air yang terukur.</jats:p>",
+        "source": "CrossRef",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_7_Jurnal_Nasional_Indonesia_SINTA\\Markdown\\04_2026_Prototipe Alat Deteksi Banjir Berbasis ESP32, TinyML, dan Notifikasi Telegram.md"
+      },
+      {
+        "title": "TinyML pada ESP32-CAM untuk Deteksi Objek Real-Time: Sebuah Tinjauan Literatur Sistematis",
+        "year": 2026,
+        "authors": [
+          "Mohamad Ardi",
+          "Kandi Harianto"
+        ],
+        "venue": "Journal of Applied Microcontroller and Autonomous System",
+        "doi": "https://doi.org/10.71302/jamas.v6i1.102",
+        "oa_url": "",
+        "abstract": "<jats:p>Perkembangan kecerdasan buatan pada perangkat tepi (edge device) telah mendorong munculnya paradigma Tiny Machine Learning (TinyML) yang memungkinkan inferensi model pembelajaran mesin berjalan langsung pada mikrokontroler dengan sumber daya terbatas, tanpa bergantung pada komputasi awan. Meskipun sejumlah studi telah menerapkan TinyML pada modul ESP32-CAM secara terpisah, belum terdapat kajian yang merangkum secara sistematis arsitektur model, teknik optimasi, dan kinerja yang dilaporkan, sehingga gambaran komprehensif mengenai capaian dan keterbatasan pendekatan tersebut masih sulit diperoleh. Penelitian ini bertujuan untuk mengkaji secara sistematis penerapan TinyML pada modul ESP32-CAM untuk keperluan deteksi objek secara real-time, khususnya dalam hal arsitektur model, teknik optimasi, dan kinerja sistem yang dihasilkan. Metode yang digunakan adalah Systematic Literature Review (SLR) dengan tahapan perencanaan, pelaksanaan pencarian pada basis data ilmiah, serta penyaringan berdasarkan kriteria inklusi dan eksklusi. Sintesis dilakukan terhadap 20 artikel terpilih yang dipublikasikan antara tahun 2021 hingga 2026. Hasil kajian menunjukkan bahwa arsitektur Faster Objects, More Objects (FOMO) dan model terkuantisasi berbasis TensorFlow Lite for Microcontrollers (TFLM) menjadi pendekatan dominan karena mampu menekan ukuran model hingga di bawah 500 KB dengan tetap menjaga akurasi deteksi di atas 90% pada kondisi lingkungan terkendali. Teknik kuantisasi INT8 dan pemangkasan jaringan (pruning) terbukti efektif menurunkan kebutuhan RAM dan ROM masing-masing hingga lebih dari 25% tanpa penurunan akurasi yang signifikan. Kajian ini juga mengidentifikasi keterbatasan utama berupa sensitivitas terhadap kondisi pencahayaan dan latensi inferensi yang masih bervariasi antara 300 hingga 700 milidetik. FOMO dan kuantisasi INT8 terbukti menjadi pendekatan yang paling efektif untuk diterapkan pada ESP32-CAM, meskipun tantangan sensitivitas pencahayaan dan variasi latensi inferensi masih perlu diatasi pada penerapan lapangan. Penelitian ini diharapkan dapat menjadi rujukan bagi peneliti dan praktisi dalam merancang sistem deteksi objek berbasis TinyML yang efisien pada perangkat ESP32-CAM untuk aplikasi pemantauan, robotika, dan keamanan berbiaya rendah.</jats:p>",
+        "source": "CrossRef",
+        "pdf_saved": false,
+        "pdf_path": null,
+        "md_path": "d:\\Kuliah\\Semester 5\\Metopen\\Skripsi\\pdf1\\Project_IoT_Gelang_SOS\\Klaster_7_Jurnal_Nasional_Indonesia_SINTA\\Markdown\\05_2026_TinyML pada ESP32-CAM untuk Deteksi Objek Real-Time Sebuah Tinjauan Literatur Sistematis.md"
+      }
+    ]
+  }
+}

@@ -15,9 +15,11 @@ import {
   Sparkles,
   LogIn,
   LogOut,
+  Cpu,
+  ShieldCheck,
 } from 'lucide-react';
 import { useCourse } from '@/context/CourseContext';
-import { COURSE_MODULES } from '@/lib/courseData';
+import { COURSE_MODULES, IOT_MODULES, getModulesByTrack, getTrackById } from '@/lib/courseData';
 import { LoginModal } from '@/components/LoginModal';
 
 const NAV_ITEMS = [
@@ -31,7 +33,7 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const { streakDays, xp, completedModules, user, logout } = useCourse();
+  const { streakDays, xp, completedModules, user, logout, activeTrack, setActiveTrack } = useCourse();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const isActive = (href: string) => {
@@ -39,16 +41,18 @@ export function Navbar() {
     return pathname.startsWith(href);
   };
 
+  const currentTrack = getTrackById(activeTrack);
+  const currentModules = getModulesByTrack(activeTrack);
   const completedCount = completedModules.filter((slug) =>
-    COURSE_MODULES.some((m) => m.slug === slug)
+    currentModules.some((m) => m.slug === slug)
   ).length;
-  const pct = Math.round((completedCount / COURSE_MODULES.length) * 100);
+  const pct = currentModules.length > 0 ? Math.round((completedCount / currentModules.length) * 100) : 0;
 
   return (
     <>
       {/* Desktop Left Sidebar */}
       <aside className="hidden lg:flex lg:w-64 lg:shrink-0 lg:flex-col lg:justify-between lg:sticky lg:top-0 lg:h-screen border-r border-[#1E1B18]/10 bg-[#FFF9F0] p-5">
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group px-1">
             <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-2xl border-2 border-[#C85A3D] bg-[#FAF3E8] transition-transform duration-200 group-hover:scale-105">
@@ -67,9 +71,43 @@ export function Navbar() {
                   Fast
                 </span>
               </div>
-              <p className="text-xs font-medium text-[#6E6259]">Kursus InfoSec</p>
+              <p className="text-xs font-medium text-[#6E6259]">
+                {activeTrack === 'iot' ? 'IoT & TinyML ESP32' : 'Kursus InfoSec'}
+              </p>
             </div>
           </Link>
+
+          {/* Track Switcher Quick Button in Sidebar */}
+          <div className="rounded-2xl border border-[#1E1B18]/10 bg-[#FAF3E8]/80 p-2">
+            <div className="flex items-center justify-between text-[11px] font-extrabold text-[#6E6259] px-1 pb-1.5">
+              <span>Jalur Aktif</span>
+              <span className="text-[10px] opacity-70">{completedCount}/{currentModules.length}</span>
+            </div>
+            <div className="grid grid-cols-2 gap-1.5">
+              <button
+                onClick={() => setActiveTrack('cyber')}
+                className={`flex items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-extrabold transition-all ${
+                  activeTrack === 'cyber'
+                    ? 'bg-[#1E1B18] text-[#FFB067] shadow-sm'
+                    : 'text-[#6E6259] hover:bg-[#FFEAD2]/70 hover:text-[#1E1B18]'
+                }`}
+                title="Pilih Jalur Keamanan Siber"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" /> Cyber
+              </button>
+              <button
+                onClick={() => setActiveTrack('iot')}
+                className={`flex items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-extrabold transition-all ${
+                  activeTrack === 'iot'
+                    ? 'bg-[#1E1B18] text-[#2DD4BF] shadow-sm'
+                    : 'text-[#6E6259] hover:bg-[#FFEAD2]/70 hover:text-[#1E1B18]'
+                }`}
+                title="Pilih Jalur IoT Gelang SOS"
+              >
+                <Cpu className="h-3.5 w-3.5" /> IoT SOS
+              </button>
+            </div>
+          </div>
 
           {/* Vertical Nav Links */}
           <nav className="space-y-1.5">
@@ -177,7 +215,22 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-1.5">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#1E1B18] px-2.5 py-1 text-[11px] font-bold text-[#FAF3E8]">
+            <button
+              onClick={() => setActiveTrack(activeTrack === 'iot' ? 'cyber' : 'iot')}
+              className="inline-flex items-center gap-1 rounded-full bg-[#1E1B18] px-2.5 py-1 text-[10px] font-extrabold text-[#FAF3E8]"
+              title="Ganti Jalur Belajar"
+            >
+              {activeTrack === 'iot' ? (
+                <>
+                  <Cpu className="h-3 w-3 text-[#2DD4BF]" /> IoT
+                </>
+              ) : (
+                <>
+                  <ShieldCheck className="h-3 w-3 text-[#FFB067]" /> Cyber
+                </>
+              )}
+            </button>
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#1E1B18] px-2 py-1 text-[11px] font-bold text-[#FAF3E8]">
               <Flame className="h-3 w-3 fill-[#FF9472] text-[#FF9472]" /> {streakDays}
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-[#FFB067] px-2.5 py-1 text-[11px] font-bold text-[#1E1B18]">

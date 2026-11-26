@@ -260,4 +260,286 @@ export const MODULE_LESSONS: Record<string, ModuleLesson> = {
       'Tahu langkah hardening dasar server.',
     ],
   },
+
+  // ==========================================
+  // JALUR IOT & TINYML (PROYEK GELANG SOS)
+  // ==========================================
+  'iot-arsitektur-sos': {
+    slug: 'iot-arsitektur-sos',
+    summary:
+      'Memahami urgensi medis dan arsitektur hardware-software Gelang Darurat SOS untuk lansia dan disabilitas berbasis ESP32, sensor inersial MPU6050, dan oximeter MAX30102.',
+    objectives: [
+      'Memahami urgensi pemantauan pasif lansia/disabilitas tanpa bergantung tombol manual.',
+      'Menguasai arsitektur kolaborasi Edge-Cloud (ESP32 -> TinyML -> Firebase -> Caregiver < 5s).',
+      'Memetakan pinout perangkat keras: I2C (GPIO21/22), Buzzer (GPIO18), Haptic (GPIO19), dan catu daya Li-Po 3.7V.',
+    ],
+    sections: [
+      {
+        heading: '1. Urgensi Medis: Kegagalan Tombol Darurat Manual',
+        body: 'Studi literatur Moreno (2024) terhadap 1.563 penelitian membuktikan bahwa 88% lansia dan penderita demensia/stroke tidak mampu menekan tombol darurat fisik kecil saat terjatuh atau mengalami serangan mendadak. Oleh karena itu, gelang SOS harus memiliki kecerdasan buatan terdistribusi (Edge AI) yang mengenali anomali secara otomatis tanpa partisipasi aktif korban.',
+      },
+      {
+        heading: '2. Arsitektur Kolaborasi Edge-Cloud',
+        body: 'Sistem dirancang dengan pembagian tugas yang efisien:',
+        bullets: [
+          'Edge Unit (Gelang): Melakukan sampling sensor pada 50 Hz, menghitung fitur sliding window 2 detik, dan menjalankan inferensi TinyML Random Forest secara lokal (< 10 ms).',
+          'Feedback Lokal: Mengaktifkan buzzer dan haptic motor selama 10 detik sebagai jeda pembatalan (grace period) jika terjadi alarm palsu.',
+          'Cloud Broker: Jika tidak dibatalkan, ESP32 mengaktifkan Wi-Fi untuk mengirim payload darurat ke Firebase Realtime Database via koneksi aman HTTPS/TLS.',
+          'Caregiver Receiver: Aplikasi smartphone keluarga/perawat menerima push notification darurat dengan latensi total < 5 detik.',
+        ],
+      },
+      {
+        heading: '3. Spesifikasi Komponen & Skema Daya',
+        body: 'Komponen yang digunakan meliputi ESP32 (SRAM 520KB, Flash 4MB), modul MPU6050 (akselerasi & gyro), MAX30102 (pulse oximeter), modul charger TP4056 dengan baterai Li-Po 500mAh, serta regulator LDO 3.3V hemat daya untuk memastikan daya tahan operasional di atas 18 jam.',
+      },
+    ],
+    labPractice:
+      'Buat sketsa Arduino I2C Scanner sederhana untuk mendeteksi apakah sensor MPU6050 (0x68) dan MAX30102 (0x57) terhubung dengan baik pada pin SDA (GPIO 21) dan SCL (GPIO 22) ESP32.',
+    checklist: [
+      'Saya paham alasan ilmiah mengapa tombol panic button manual tidak efektif untuk lansia.',
+      'Saya sudah memverifikasi alamat I2C MPU6050 (0x68) dan MAX30102 (0x57).',
+      'Saya siap menyusun Bab 1 dan Bab 2 Skripsi dengan sitasi Moreno (2024) dan Carvalho (2026).',
+    ],
+  },
+
+  'iot-tinyml-esp32': {
+    slug: 'iot-tinyml-esp32',
+    summary:
+      'Menerapkan algoritma TinyML Random Forest pada mikrokontroler ESP32: alasan keunggulan dibanding Deep Learning, alur ekspor Scikit-Learn ke C++ header (emlearn), dan inferensi berkecepatan tinggi.',
+    objectives: [
+      'Memahami perbandingan komputasi, memori, dan daya antara Random Forest vs CNN/LSTM.',
+      'Melatih model Random Forest di Python dan mengekspornya menjadi berkas header C++ (`model.h`) menggunakan emlearn.',
+      'Mengintegrasikan model.h ke dalam program ESP32 Arduino dan mengukur waktu inferensi lokal.',
+    ],
+    sections: [
+      {
+        heading: '1. Mengapa Random Forest untuk Edge MCU?',
+        body: 'Mikrokontroler ESP32 memiliki SRAM terbatas (520 KB). Deep Learning (CNN/LSTM) membutuhkan puluhan MB memori dan operasi floating-point matriks berat. Sebaliknya, Random Forest (ensemble Decision Trees) hanya berupa percabangan logika if-else berbobot ringan, dengan waktu inferensi < 10 ms dan kebutuhan RAM < 15 KB.',
+      },
+      {
+        heading: '2. Alur Pelatihan & Konversi emlearn di Python',
+        body: 'Gunakan Scikit-Learn untuk melatih 10 Decision Trees dengan kedalaman maksimal (max_depth) 6 agar model tidak overfitting:',
+        bullets: [
+          'Kumpulkan dataset fitur: SVM mean, SVM max, RMS, Variance, MCR, Heart Rate, SpO2.',
+          'Latih RandomForestClassifier(n_estimators=10, max_depth=6).',
+          'Ekspor ke C++ menggunakan: `c_model = emlearn.convert(clf, method="inline"); c_model.save("model.h")`.',
+        ],
+      },
+      {
+        heading: '3. Inferensi Real-Time di ESP32',
+        body: 'Sertakan `#include "model.h"` di Arduino IDE. Panggil fungsi `int hasil = sos_random_forest_predict(features, 7);` setiap window data selesai diproses. Jika mengembalikan nilai 1 (anomali darurat), picu alarm.',
+      },
+    ],
+    labPractice:
+      'Gunakan Python untuk mengekspor model Random Forest sederhana dengan emlearn, lalu uji waktu eksekusi fungsi prediksinya di ESP32 menggunakan fungsi `micros()` untuk membuktikan latensi < 10 ms.',
+    checklist: [
+      'Paham perbandingan Random Forest vs Deep Learning di mikrokontroler.',
+      'Berhasil menghasilkan berkas model.h dari dataset latihan.',
+      'Inferensi C++ di ESP32 berhasil dijalankan dengan latensi di bawah 10 milidetik.',
+    ],
+  },
+
+  'iot-ekstraksi-fitur': {
+    slug: 'iot-ekstraksi-fitur',
+    summary:
+      'Pemrosesan sinyal digital untuk deteksi anomali: sampling 50 Hz, circular buffer 2 detik (100 sampel) dengan overlap 50%, serta ekstraksi fitur domain waktu untuk mereduksi alarm palsu dari aktivitas harian (ADL).',
+    objectives: [
+      'Menerapkan sampling data akselerometer 50 Hz stabil menggunakan timer non-blocking.',
+      'Menghitung fitur statistik: SVM (Signal Vector Magnitude), RMS, Variance, dan Mean Crossing Rate (MCR).',
+      'Menerapkan filter post-impact inactivity untuk membedakan jatuh nyata dari aktivitas harian seperti tepuk tangan atau mengetik.',
+    ],
+    sections: [
+      {
+        heading: '1. Sampling 50 Hz & Sliding Window 2 Detik',
+        body: 'Panjang window 2 detik (100 sampel pada 50 Hz) dengan overlap 50% (50 sampel / 1 detik) terbukti secara empiris (Casilari et al., 2022) memberikan waktu pengenalan paling cepat tanpa kehilangan pola pre-impact, impact peak, dan post-impact.',
+      },
+      {
+        heading: '2. Formulasi Fitur Domain Waktu',
+        body: 'Fitur-fitur utama yang diekstraksi dari data percepatan:',
+        bullets: [
+          'SVM (Signal Vector Magnitude): sqrt(Ax^2 + Ay^2 + Az^2). Mengukur percepatan skalar tanpa dipengaruhi orientasi tangan.',
+          'RMS (Root Mean Square): Mengukur energi kinetik dinamis selama jendela 2 detik.',
+          'Variance (Varians): Mengukur dispersi getaran gerak pergelangan tangan.',
+          'MCR (Mean Crossing Rate): Menghitung frekuensi sinyal memotong nilai rata-rata untuk membedakan gerak berulang (berjalan) dari benturan tunggal.',
+        ],
+      },
+      {
+        heading: '3. Reduksi False Alarm ADL (Activities of Daily Living)',
+        body: 'Aktivitas seperti bertepuk tangan atau meletakkan cangkir menghasilkan impact peak sesaat, tetapi tangan segera bergerak kembali. Pada jatuh nyata, impact peak selalu diikuti oleh fase tidak bergerak (post-impact inactivity) selama 1.5 - 2 detik. Kombinasi SVM dan analisis kestabilan orientasi menurunkan false alarm hingga < 3%.',
+      },
+    ],
+    labPractice:
+      'Implementasikan circular buffer berkapasitas 100 sampel float di ESP32, lalu cetak nilai SVM dan RMS ke Serial Plotter saat tangan digerakkan normal vs saat disimulasikan hentakan jatuh.',
+    checklist: [
+      'Timer sampling 50 Hz (interval 20 ms) berjalan presisi di ESP32.',
+      'Fungsi perhitungan SVM, RMS, dan Varians menghasilkan nilai yang terverifikasi akurat.',
+      'Filter post-impact inactivity berhasil membatalkan alarm pada gerakan tepuk tangan.',
+    ],
+  },
+
+  'iot-multi-sensor-fusion': {
+    slug: 'iot-multi-sensor-fusion',
+    summary:
+      'Integrasi multi-sensor fusion: menggabungkan data kinetik inersial (MPU6050) dengan parameter fisiologis denyut nadi & saturasi oksigen (MAX30102) serta opsi sensor gestur lekukan jari (Flex Sensor).',
+    objectives: [
+      'Mengonfigurasi komunikasi I2C bersama (shared bus) antara MPU6050 dan MAX30102 pada pin GPIO21/22.',
+      'Membaca denyut nadi (BPM) dan SpO2 secara real-time dengan penanganan motion artifact.',
+      'Menyusun logika fusi multi-modal untuk mendeteksi darurat medis non-kinetik (takikardia panik > 115 BPM atau henti detak).',
+    ],
+    sections: [
+      {
+        heading: '1. Arsitektur Shared I2C Bus',
+        body: 'ESP32 berkomunikasi dengan MPU6050 (0x68) dan MAX30102 (0x57) pada jalur I2C yang sama (SDA GPIO21, SCL GPIO22) dengan resistor pull-up 4.7kΩ ke 3.3V. Pembacaan dilakukan secara terjadwal agar pembacaan optik LED MAX30102 tidak terinterupsi oleh pembacaan register IMU.',
+      },
+      {
+        heading: '2. Pembacaan PPG Fisiologis & Mitigasi Noise',
+        body: 'MAX30102 memancarkan sinar Red (660nm) dan Infrared (880nm). Sensor menghitung Heart Rate via peak detection dan SpO2 via rasio serapan AC/DC. Gerakan tangan (motion artifact) disaring dengan hanya memperbarui nilai denyut nadi saat akselerometer menunjukkan tangan dalam kondisi relatif stabil.',
+      },
+      {
+        heading: '3. Logika Fusi Multi-Sensor untuk Keputusan Darurat',
+        body: 'Kombinasi data meningkatkan akurasi sistem:',
+        bullets: [
+          'Hentakan Terdeteksi + Denyut Nadi Melonjak (> 110 BPM): Indikasi panik akibat jatuh darurat (Konfirmasi Critical Alert).',
+          'Tidak Ada Hentakan + Denyut Nadi Mendadak Hilang/Sangat Rendah (< 40 BPM): Indikasi pingsan atau aritmia akut (Medical Distress Alert).',
+          'Flex Sensor (Opsional di GPIO34 ADC): Menangkap tekukan jari membentuk isyarat SOS saat korban sadar namun lumpuh bicara.',
+        ],
+      },
+    ],
+    labPractice:
+      'Sambungkan MPU6050 dan MAX30102 ke ESP32, lalu buat program pembacaan simultan yang menampilkan nilai akselerasi (g) dan Heart Rate (BPM) pada Serial Monitor secara stabil.',
+    checklist: [
+      'Kedua sensor beroperasi normal pada shared I2C bus tanpa crash atau freezing.',
+      'Nilai BPM dan SpO2 terbaca stabil dan noise gerakan berhasil disaring.',
+      'Logika fusi multi-modal terbukti menaikkan tingkat keyakinan (confidence) prediksi anomali.',
+    ],
+  },
+
+  'iot-firebase-caregiver': {
+    slug: 'iot-firebase-caregiver',
+    summary:
+      'Integrasi konektivitas cloud IoT: komunikasi aman TLS/HTTPS ke Firebase Realtime Database, perancangan skema payload telemetri JSON, dan pengiriman notifikasi darurat ke smartphone caregiver dengan target latensi < 5 detik.',
+    objectives: [
+      'Menghubungkan ESP32 ke jaringan Wi-Fi lokal dengan protokol keamanan TLS.',
+      'Mengirimkan data anomali darurat ke Firebase Realtime Database menggunakan REST API / Firebase-ESP32 library.',
+      'Menguji dan memverifikasi latensi transmisi end-to-end dari deteksi di gelang hingga notifikasi diterima smartphone < 5 detik.',
+    ],
+    sections: [
+      {
+        heading: '1. Koneksi Wi-Fi & Keamanan TLS',
+        body: 'Untuk menghemat konsumsi daya baterai, modem Wi-Fi ESP32 berada dalam mode standby/modem-sleep saat kondisi normal, dan hanya melakukan transmisi penuh saat terdeteksi anomali atau saat mengirim data telemetri berkala (heartbeat 15 menit). Semua pengiriman data menggunakan enkripsi TLS/HTTPS port 443.',
+      },
+      {
+        heading: '2. Skema Data Realtime Database',
+        body: 'Data darurat disimpan pada node `/emergency_alerts/{alert_id}`:',
+        bullets: [
+          'timestamp: Waktu kejadian berbasis NTP Epoch time.',
+          'status: "CRITICAL_FALL" atau "PHYSIOLOGICAL_DISTRESS".',
+          'confidence: Skor keyakinan model TinyML (misal 0.962).',
+          'telemetry: { impact_g: 3.84, heart_rate_bpm: 118, spo2: 96 }.',
+          'caregiver_ack: Status konfirmasi penerimaan oleh keluarga (boolean).',
+        ],
+      },
+      {
+        heading: '3. Push Notification ke Smartphone Caregiver',
+        body: 'Perubahan pada node database Firebase otomatis memicu Cloud Messaging (FCM) berprioritas tinggi. Aplikasi pendamping Android caregiver akan menyalakan layar, membunyikan nada alarm darurat terus-menerus, dan menampilkan tombol panggilan darurat medis 112 / RS terdekat.',
+      },
+    ],
+    labPractice:
+      'Buat proyek Firebase Realtime Database gratis, masukkan URL database dan auth secret ke sketch ESP32, lalu kirim payload darurat simulasi dan ukur latensinya menggunakan fungsi `millis()`.',
+    checklist: [
+      'ESP32 berhasil terhubung ke Firebase via HTTPS/TLS.',
+      'Payload JSON darurat tersimpan rapi pada Realtime Database.',
+      'Latensi pengiriman terbukti di bawah 5 detik (rata-rata 3.2 detik).',
+    ],
+  },
+
+  'iot-feedback-audio-suara': {
+    slug: 'iot-feedback-audio-suara',
+    summary:
+      'Umpan balik audio & taktil lokal: pengendalian Active Buzzer 3.3V dan Haptic Vibration Motor dengan protokol grace period pembatalan 10 detik, serta arsitektur ekspansi asisten suara darurat (Speech-to-Text).',
+    objectives: [
+      'Memprogram pola nada peringatan Active Buzzer (SOS Morse Code) dan getaran taktil haptic motor.',
+      'Menerapkan protokol jeda pembatalan (grace period) 10 detik untuk mencegah kepanikan keluarga akibat alarm palsu.',
+      'Memahami integrasi fitur ekspansi suara darurat (Voice SOS / Speech-to-Text) berbasis smartphone companion.',
+    ],
+    sections: [
+      {
+        heading: '1. Rangkaian Pengendali Buzzer & Motor Getar',
+        body: 'Buzzer dan motor getar membutuhkan arus 30-50 mA, melebihi batas aman arus pin GPIO ESP32 (maks 12 mA). Gunakan transistor NPN (2N2222 atau SS8050) sebagai saklar elektronik (driver) dengan resistor basis 1kΩ dan diode flyback (1N4148) untuk meredam lonjakan tegangan induktif kumparan motor.',
+      },
+      {
+        heading: '2. Protokol Grace Period 10 Detik',
+        body: 'Saat TinyML mendeteksi anomali, sistem TIDAK langsung mengirim sinyal ke cloud:',
+        bullets: [
+          'Detik 0 - 10: Buzzer berbunyi bip berulang dan motor bergetar memberi sinyal ke pengguna.',
+          'Jika pengguna masih sadar dan baik-baik saja (misal tersandung ringan), pengguna dapat menekan tombol pembatalan fisik (*cancel button*) pada gelang.',
+          'Jika tombol ditekan dalam 10 detik, status alarm dibatalkan dan sistem kembali ke mode monitoring normal.',
+          'Jika tidak ada pembatalan setelah 10 detik, sistem mengonfirmasi bahaya nyata dan segera menyalakan Wi-Fi untuk push ke Firebase.',
+        ],
+      },
+      {
+        heading: '3. Ekspansi Suara Asistif (Voice SOS Companion)',
+        body: 'Berdasarkan literatur Patel et al. (Nexus, 2026), fitur suara menjadi rujukan masa depan: gelang dapat memicu asisten suara pada smartphone melalui BLE untuk mengenali teriakan minta tolong ("TOLONG", "BANTU SAYA") saat tangan sama sekali tidak dapat digerakkan.',
+      },
+    ],
+    labPractice:
+      'Tulis kode Arduino yang membunyikan buzzer pola SOS (`... --- ...`) selama 10 detik dengan interupsi tombol tombol pembatalan di GPIO 0/35 untuk membatalkan proses transmisi cloud.',
+    checklist: [
+      'Buzzer dan motor getar merespons perintah GPIO dengan driver transistor yang aman.',
+      'Logika countdown grace period 10 detik berfungsi sempurna dengan tombol cancel.',
+      'Literatur penunjang asisten suara (Nexus 2026 / Mood Mate 2025) siap disitasi untuk Bab 2 & Bab 5.',
+    ],
+  },
+
+  'iot-pengujian-sinta': {
+    slug: 'iot-pengujian-sinta',
+    summary:
+      'Metodologi pengujian menyeluruh, perhitungan Confusion Matrix (Akurasi, Sensitivitas, False Alarm Rate), pemetaan sitasi 7 klaster ke Bab 1 s.d. Bab 5 Skripsi, dan rujukan jurnal nasional terindeks SINTA.',
+    objectives: [
+      'Merancang skenario pengujian prototipe (20 uji jatuh, 50 uji ADL normal, dan uji latensi jaringan).',
+      'Menghitung matriks evaluasi: Akurasi (> 95%), Sensitivitas/Recall (> 96%), dan False Alarm Rate (< 4%).',
+      'Memetakan seluruh literatur 7 klaster ke dalam Bab 1, 2, 3, 4, dan 5 Skripsi / Laporan Tugas Akhir.',
+    ],
+    sections: [
+      {
+        heading: '1. Desain Skenario Pengujian Empiris',
+        body: 'Pengujian prototipe harus dirancang secara sistematis dengan protokol keamanan:',
+        bullets: [
+          'Skenario Jatuh (Fall Scenarios): Jatuh ke depan (trip fall), jatuh ke belakang (slip fall), dan jatuh ke samping (syncope fall) menggunakan matras pengaman busa tebal.',
+          'Skenario ADL (Activities of Daily Living): Berjalan normal, menaiki/menuruni tangga, duduk cepat di kursi, bertepuk tangan, mengetik keyboard, dan mengayun tangan saat mengambil barang.',
+          'Uji Latensi Jaringan: Mengukur waktu respon dari 3 kondisi koneksi (Wi-Fi dekat router, Wi-Fi terhalang tembok, dan tethering 4G).',
+        ],
+      },
+      {
+        heading: '2. Perhitungan Confusion Matrix',
+        body: 'Hitung metrik ilmiah untuk Bab 4:',
+        bullets: [
+          'TP (True Positive): Kejadian jatuh yang berhasil dideteksi sistem.',
+          'TN (True Negative): Aktivitas harian ADL yang benar-benar tidak memicu alarm.',
+          'FP (False Positive): Aktivitas normal yang salah dideteksi sebagai jatuh (False Alarm).',
+          'FN (False Negative): Kejadian jatuh nyata yang gagal dideteksi (Paling berbahaya).',
+          'Sensitivitas / Recall = TP / (TP + FN) (Target: > 96%).',
+          'False Alarm Rate (FAR) = FP / (FP + TN) (Target: < 4%).',
+        ],
+      },
+      {
+        heading: '3. Pemetaan Sitasi ke Bab Skripsi 1 s.d. 5',
+        body: 'Gunakan matriks ini saat menyusun draf naskah skripsi:',
+        bullets: [
+          'Bab 1: Moreno (2024), Carvalho (2026), Giawa (2025) untuk latar belakang urgensi lansia.',
+          'Bab 2: Baccouche (2023), Sabry (2026), Kumar (2026), Doukaga (2024) untuk teori TinyML dan sensor fusion.',
+          'Bab 3: Casilari (2022), Wang (2025), Santos (2021) untuk metodologi circular buffer dan rumus SVM/RMS.',
+          'Bab 4: Siddiqui (2026), Hidayat (2026) untuk benchmark perbandingan hasil pengujian.',
+          'Bab 5: Patel (2026), Al-Zubaidi (2025) untuk kesimpulan dan saran BLE Long Range / Voice Assistant.',
+        ],
+      },
+    ],
+    labPractice:
+      'Gunakan spreadsheet atau script Python untuk memasukkan data 50 uji coba prototipe, lalu hitung nilai Confusion Matrix, Accuracy, Precision, Recall, dan F1-Score secara otomatis.',
+    checklist: [
+      'Protokol 20 uji jatuh buatan dan 50 uji ADL normal siap dilaksanakan secara aman.',
+      'Rumus perhitungan Confusion Matrix, Sensitivitas, dan FAR sudah dipahami.',
+      'Seluruh sitasi 7 klaster (termasuk jurnal SINTA) sudah dipetakan ke Bab 1 s.d. 5 Skripsi.',
+    ],
+  },
 };

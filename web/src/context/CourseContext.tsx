@@ -1,7 +1,18 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { COURSE_MODULES, COURSE_PHASES } from '@/lib/courseData';
+import {
+  TrackId,
+  CourseTrack,
+  COURSE_TRACKS,
+  COURSE_MODULES,
+  COURSE_PHASES,
+  IOT_MODULES,
+  IOT_PHASES,
+  getAllModules,
+  getModulesByTrack,
+  getPhasesByTrack,
+} from '@/lib/courseData';
 
 export interface CustomQA {
   id: string;
@@ -28,6 +39,7 @@ export interface UserProfile {
 
 interface CourseState {
   user: UserProfile | null;
+  activeTrack: TrackId;
   completedModules: string[];
   dailyCheckins: boolean[]; // [Sen, Sel, Rab, Kam, Jum, Sab, Min]
   quizScores: Record<string, number>;
@@ -38,6 +50,7 @@ interface CourseState {
 }
 
 interface CourseContextValue extends CourseState {
+  setActiveTrack: (track: TrackId) => void;
   login: (user: UserProfile) => void;
   logout: () => void;
   toggleModuleComplete: (slug: string) => void;
@@ -61,6 +74,7 @@ function getNowMeta() {
 
 const DEFAULT_STATE: CourseState = {
   user: null,
+  activeTrack: 'cyber',
   completedModules: ['Basic'],
   dailyCheckins: [true, true, true, true, false, false, false],
   quizScores: {},
@@ -115,12 +129,22 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
   };
 
   const calculateXp = (completed: string[], scores: Record<string, number>) => {
+    const all = getAllModules();
     const modXp = completed.reduce((sum, slug) => {
-      const found = COURSE_MODULES.find((m) => m.slug === slug);
+      const found = all.find((m) => m.slug === slug);
       return sum + (found ? found.xp : 40);
     }, 0);
     const quizXp = Object.values(scores).reduce((sum, sc) => sum + Math.round(sc * 1.5), 0);
     return modXp + quizXp;
+  };
+
+  const setActiveTrack = (activeTrack: TrackId) => {
+    const trackName = activeTrack === 'iot' ? 'IoT & TinyML Gelang SOS' : 'Cyber Security (InfoSec)';
+    const activityLogs = [
+      createLog(`Beralih Jalur Belajar: ${trackName}`, 'Fokus materi disesuaikan', 'checkin'),
+      ...state.activityLogs,
+    ];
+    persist({ ...state, activeTrack, activityLogs });
   };
 
   const createLog = (
@@ -158,7 +182,8 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
       : [...state.completedModules, slug];
     const xp = calculateXp(completedModules, state.quizScores);
 
-    const mod = COURSE_MODULES.find((m) => m.slug === slug);
+    const all = getAllModules();
+    const mod = all.find((m) => m.slug === slug);
     const modTitle = mod ? mod.title : slug.replace(/_/g, ' ');
     const activityLogs = !exists
       ? [
@@ -200,7 +225,8 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
     const quizScores = { ...state.quizScores, [phaseId]: best };
     const xp = calculateXp(state.completedModules, quizScores);
 
-    const phase = COURSE_PHASES.find((p) => p.id === phaseId);
+    const allPhases = [...COURSE_PHASES, ...IOT_PHASES];
+    const phase = allPhases.find((p) => p.id === phaseId);
     const label = phase ? phase.badge : 'Ujian Campuran';
     const activityLogs = [
       createLog(
@@ -252,6 +278,7 @@ export function CourseProvider({ children }: { children: React.ReactNode }) {
     <CourseContext.Provider
       value={{
         ...state,
+        setActiveTrack,
         login,
         logout,
         toggleModuleComplete,

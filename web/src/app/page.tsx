@@ -18,7 +18,18 @@ import {
   Play,
 } from 'lucide-react';
 import { useCourse } from '@/context/CourseContext';
-import { COURSE_MODULES, COURSE_PHASES } from '@/lib/courseData';
+import {
+  COURSE_TRACKS,
+  COURSE_MODULES,
+  COURSE_PHASES,
+  IOT_MODULES,
+  IOT_PHASES,
+  getModulesByTrack,
+  getPhasesByTrack,
+  getTrackById,
+  TrackId,
+} from '@/lib/courseData';
+import { Cpu } from 'lucide-react';
 
 const DAYS = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
 
@@ -38,6 +49,8 @@ const cardVariants = {
 export default function DashboardPage() {
   const {
     user,
+    activeTrack,
+    setActiveTrack,
     completedModules,
     dailyCheckins,
     toggleDayCheckin,
@@ -46,15 +59,19 @@ export default function DashboardPage() {
     streakDays,
   } = useCourse();
 
-  const totalModules = COURSE_MODULES.length;
+  const currentTrack = getTrackById(activeTrack);
+  const currentModules = getModulesByTrack(activeTrack);
+  const currentPhases = getPhasesByTrack(activeTrack);
+
+  const totalModules = currentModules.length;
   const completedCount = completedModules.filter((slug) =>
-    COURSE_MODULES.some((m) => m.slug === slug)
+    currentModules.some((m) => m.slug === slug)
   ).length;
   const remainingCount = totalModules - completedCount;
-  const overallProgress = Math.round((completedCount / totalModules) * 100);
+  const overallProgress = totalModules > 0 ? Math.round((completedCount / totalModules) * 100) : 0;
 
-  const nextModules = COURSE_MODULES.filter((m) => !completedModules.includes(m.slug)).slice(0, 4);
-  const firstNext = nextModules[0] ?? COURSE_MODULES[0];
+  const nextModules = currentModules.filter((m) => !completedModules.includes(m.slug)).slice(0, 4);
+  const firstNext = nextModules[0] ?? currentModules[0];
 
   const quizValues = Object.values(quizScores);
   const avgQuiz =
@@ -69,6 +86,92 @@ export default function DashboardPage() {
       animate="show"
       className="space-y-4"
     >
+      {/* Track Selector Bar (Pilihan Materi / Jalur Belajar) */}
+      <motion.div
+        variants={cardVariants}
+        className="rounded-3xl border border-[#1E1B18]/10 bg-white p-3.5 sm:p-4 shadow-sm"
+      >
+        <div className="flex flex-col gap-3.5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center gap-3">
+            <div
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-[#1E1B18]"
+              style={{ backgroundColor: currentTrack.color }}
+            >
+              {currentTrack.id === 'iot' ? (
+                <Cpu className="h-6 w-6 text-[#1E1B18]" />
+              ) : (
+                <ShieldCheck className="h-6 w-6 text-[#1E1B18]" />
+              )}
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#6E6259]">
+                  Pilih Materi Latihan:
+                </span>
+                <span
+                  className="rounded-full px-2 py-0.5 text-[10px] font-black"
+                  style={{
+                    backgroundColor: `${currentTrack.color}30`,
+                    color: '#1E1B18',
+                  }}
+                >
+                  {currentTrack.badge}
+                </span>
+              </div>
+              <h2 className="text-base sm:text-lg font-black text-[#1E1B18]">
+                {currentTrack.name}
+              </h2>
+            </div>
+          </div>
+
+          {/* Track Switcher Pills */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {COURSE_TRACKS.map((t) => {
+              const active = t.id === activeTrack;
+              const Icon = t.id === 'iot' ? Cpu : ShieldCheck;
+              const trackDone = completedModules.filter((slug) =>
+                getModulesByTrack(t.id).some((m) => m.slug === slug)
+              ).length;
+              const trackTotal = getModulesByTrack(t.id).length;
+
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveTrack(t.id)}
+                  className={`flex items-center gap-3 rounded-2xl px-4 py-2.5 text-left transition-all ${
+                    active
+                      ? 'bg-[#1E1B18] text-[#FAF3E8] shadow-md ring-2 ring-[#1E1B18]/20'
+                      : 'border border-[#1E1B18]/10 bg-[#FAF3E8]/70 text-[#52463C] hover:bg-[#FFEAD2]/70 hover:border-[#1E1B18]/20'
+                  }`}
+                >
+                  <div
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                      active ? 'bg-white/10' : 'bg-[#1E1B18]/5'
+                    }`}
+                  >
+                    <Icon
+                      className={`h-4 w-4 ${
+                        active
+                          ? t.id === 'iot'
+                            ? 'text-[#2DD4BF]'
+                            : 'text-[#FFB067]'
+                          : 'text-[#6E6259]'
+                      }`}
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-black">{t.shortName}</p>
+                    <p className="text-[10px] opacity-75">
+                      {trackDone}/{trackTotal} Modul Tuntas
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </motion.div>
+
       {/* Top Bento Row */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
         {/* Welcome / Hero Card */}
@@ -83,13 +186,13 @@ export default function DashboardPage() {
               </div>
               <div>
                 <span className="inline-flex items-center gap-1 rounded-full bg-[#FFEAD2] px-2.5 py-0.5 text-[11px] font-bold text-[#C85A3D]">
-                  <ShieldCheck className="h-3 w-3" /> Mode Belajar Cepat
+                  <Sparkles className="h-3 w-3" /> {currentTrack.badge}
                 </span>
                 <h1 className="mt-1 text-lg sm:text-xl font-extrabold tracking-tight text-[#1E1B18]">
-                  {user ? `Halo, ${user.name}!` : 'Halo, Pembelajar InfoSec!'}
+                  {user ? `Halo, ${user.name}!` : 'Halo, Pembelajar!'}
                 </h1>
-                <p className="text-xs text-[#6E6259]">
-                  Kursus keamanan siber lokal & terstruktur
+                <p className="text-xs text-[#6E6259] line-clamp-1">
+                  {currentTrack.tagline}
                 </p>
               </div>
             </div>
@@ -97,7 +200,7 @@ export default function DashboardPage() {
 
           <div className="mt-4 rounded-2xl bg-[#FFF8EE] p-3.5 border border-[#FFB067]/40">
             <div className="flex items-center justify-between text-xs font-semibold text-[#6E6259]">
-              <span>Progres Keseluruhan</span>
+              <span>Progres Jalur ({currentTrack.shortName})</span>
               <span className="font-bold text-[#1E1B18]">{overallProgress}%</span>
             </div>
             <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-[#FFEAD2]">
@@ -105,7 +208,8 @@ export default function DashboardPage() {
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.max(overallProgress, 3)}%` }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="h-full rounded-full bg-[#FFB067]"
+                className="h-full rounded-full"
+                style={{ backgroundColor: currentTrack.color }}
               />
             </div>
             <div className="mt-2.5 flex items-center justify-between text-[11px] font-semibold text-[#6E6259]">
@@ -241,7 +345,7 @@ export default function DashboardPage() {
             <div>
               <h2 className="text-base sm:text-lg font-extrabold text-[#1E1B18]">Peta Belajar Cepat</h2>
               <p className="text-xs text-[#6E6259]">
-                Progres belajar berdasarkan 4 fase kurikulum
+                Progres belajar {currentTrack.shortName} ({currentPhases.length} fase)
               </p>
             </div>
             <Link
@@ -253,8 +357,8 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-4 space-y-3">
-            {COURSE_PHASES.map((phase) => {
-              const phaseMods = COURSE_MODULES.filter((m) => m.phaseId === phase.id);
+            {currentPhases.map((phase) => {
+              const phaseMods = currentModules.filter((m) => m.phaseId === phase.id);
               const doneInPhase = phaseMods.filter((m) =>
                 completedModules.includes(m.slug)
               ).length;
@@ -336,10 +440,13 @@ export default function DashboardPage() {
                 </Link>
               ))
             ) : (
-              <div className="rounded-2xl bg-[#FFB067] p-5 text-[#1E1B18]">
+              <div
+                className="rounded-2xl p-5 text-[#1E1B18]"
+                style={{ backgroundColor: currentTrack.color }}
+              >
                 <p className="font-extrabold">Luar Biasa!</p>
                 <p className="mt-1 text-xs">
-                  Semua modul utama kurikulum sudah selesai kamu pelajari.
+                  Semua modul {currentTrack.shortName} sudah selesai kamu pelajari.
                 </p>
               </div>
             )}

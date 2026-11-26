@@ -1,3 +1,19 @@
+export type TrackId = 'cyber' | 'iot';
+
+export interface CourseTrack {
+  id: TrackId;
+  name: string;
+  shortName: string;
+  badge: string;
+  tagline: string;
+  description: string;
+  iconName: 'ShieldCheck' | 'Cpu';
+  color: string;
+  accentBg: string;
+  phaseCount: number;
+  moduleCount: number;
+}
+
 export interface CourseModule {
   slug: string;
   fileName: string;
@@ -7,6 +23,7 @@ export interface CourseModule {
   duration: string;
   level: 'Pemula' | 'Menengah' | 'Lanjutan';
   xp: number;
+  trackId?: TrackId;
 }
 
 export interface CoursePhase {
@@ -15,6 +32,7 @@ export interface CoursePhase {
   badge: string;
   description: string;
   color: string;
+  trackId?: TrackId;
 }
 
 export interface QuizQuestion {
@@ -42,6 +60,35 @@ export interface CheatItem {
   description: string;
   command: string;
 }
+
+export const COURSE_TRACKS: CourseTrack[] = [
+  {
+    id: 'cyber',
+    name: 'Cyber Security (InfoSec)',
+    shortName: 'Cyber Security',
+    badge: 'InfoSec Fast-Track',
+    tagline: 'Kurikulum Etika Hacking, Defense & Offense',
+    description: 'Pelajari konsep fundamental keamanan siber, CIA Triad, analisis jaringan, Web AppSec, kriptografi, hingga Red & Blue Team.',
+    iconName: 'ShieldCheck',
+    color: '#FFB067',
+    accentBg: 'bg-[#FFB067]/15',
+    phaseCount: 4,
+    moduleCount: 23,
+  },
+  {
+    id: 'iot',
+    name: 'IoT & TinyML (Proyek Gelang SOS)',
+    shortName: 'IoT Gelang SOS',
+    badge: 'Tugas IoT / Skripsi',
+    tagline: 'Panduan Implementasi Gelang Pintar Darurat Berbasis ESP32 TinyML',
+    description: 'Tuntunan lengkap proyek IoT Gelang SOS: Arsitektur hardware ESP32, Random Forest emlearn C++, ekstraksi fitur 50Hz, sensor fusion MPU6050+MAX30102, dan cloud Firebase.',
+    iconName: 'Cpu',
+    color: '#2DD4BF',
+    accentBg: 'bg-[#2DD4BF]/15',
+    phaseCount: 3,
+    moduleCount: 7,
+  },
+];
 
 export const COURSE_PHASES: CoursePhase[] = [
   {
@@ -313,6 +360,132 @@ export const COURSE_MODULES: CourseModule[] = [
     xp: 55,
   },
 ];
+
+export const IOT_PHASES: CoursePhase[] = [
+  {
+    id: 'iot-fase-1',
+    title: 'Fase 1: Konsep Sistem & Inti TinyML',
+    badge: 'Arsitektur & AI',
+    description: 'Pahami latar belakang keselamatan lansia, spesifikasi hardware ESP32, dan implementasi TinyML Random Forest.',
+    color: '#2DD4BF',
+    trackId: 'iot',
+  },
+  {
+    id: 'iot-fase-2',
+    title: 'Fase 2: Pemrosesan Sinyal & Sensor Fusion',
+    badge: 'Sinyal & Sensor',
+    description: 'Ekstraksi fitur sliding window 50Hz, reduksi false alarm ADL, dan fusi sensor MPU6050 + MAX30102 / Flex.',
+    color: '#38BDF8',
+    trackId: 'iot',
+  },
+  {
+    id: 'iot-fase-3',
+    title: 'Fase 3: Integrasi Cloud, Alert & Skripsi',
+    badge: 'Cloud & Evaluasi',
+    description: 'Konektivitas Wi-Fi TLS, Firebase Realtime DB, aplikasi caregiver, feedback audio/buzzer, dan matriks pengujian SINTA.',
+    color: '#A78BFA',
+    trackId: 'iot',
+  },
+];
+
+export const IOT_MODULES: CourseModule[] = [
+  // Fase 1: Konsep & AI
+  {
+    slug: 'iot-arsitektur-sos',
+    fileName: 'iot-arsitektur-sos.md',
+    title: 'Arsitektur Sistem & Use-Case Gelang SOS',
+    subtitle: 'Latar belakang urgensi lansia/disabilitas, batasan hardware ESP32, dan alur kolaborasi Edge-Cloud.',
+    phaseId: 'iot-fase-1',
+    duration: '25 mnt',
+    level: 'Pemula',
+    xp: 60,
+    trackId: 'iot',
+  },
+  {
+    slug: 'iot-tinyml-esp32',
+    fileName: 'iot-tinyml-esp32.md',
+    title: 'TinyML & Random Forest di ESP32',
+    subtitle: 'Alasan pemilihan Random Forest vs Deep Learning, ekspor model Scikit-Learn ke C++ header (emlearn), dan optimasi SRAM.',
+    phaseId: 'iot-fase-1',
+    duration: '40 mnt',
+    level: 'Menengah',
+    xp: 90,
+    trackId: 'iot',
+  },
+  // Fase 2: Sinyal & Sensor
+  {
+    slug: 'iot-ekstraksi-fitur',
+    fileName: 'iot-ekstraksi-fitur.md',
+    title: 'Ekstraksi Fitur & Sliding Window (Reduksi False Alarm)',
+    subtitle: 'Sampling 50 Hz, window 2 detik overlap 50%, kalkulasi SVM, RMS, Variance, MCR, dan penolakan aktivitas ADL.',
+    phaseId: 'iot-fase-2',
+    duration: '35 mnt',
+    level: 'Menengah',
+    xp: 80,
+    trackId: 'iot',
+  },
+  {
+    slug: 'iot-multi-sensor-fusion',
+    fileName: 'iot-multi-sensor-fusion.md',
+    title: 'Multi-Sensor Fusion (MPU6050 + MAX30102 / Flex)',
+    subtitle: 'Kalibrasi I2C, fusi data inersial MPU6050 dan biometrik denyut nadi (BPM) / SpO2, serta opsi sensor flex gestur darurat.',
+    phaseId: 'iot-fase-2',
+    duration: '40 mnt',
+    level: 'Menengah',
+    xp: 85,
+    trackId: 'iot',
+  },
+  // Fase 3: Cloud & Evaluasi
+  {
+    slug: 'iot-firebase-caregiver',
+    fileName: 'iot-firebase-caregiver.md',
+    title: 'Integrasi Cloud Firebase & Notifikasi Caregiver',
+    subtitle: 'Protokol Wi-Fi HTTPS/TLS, Firebase Realtime DB, skema telemetri JSON, dan pengiriman notifikasi darurat < 5 detik.',
+    phaseId: 'iot-fase-3',
+    duration: '35 mnt',
+    level: 'Menengah',
+    xp: 80,
+    trackId: 'iot',
+  },
+  {
+    slug: 'iot-feedback-audio-suara',
+    fileName: 'iot-feedback-audio-suara.md',
+    title: 'Feedback Audio Lokal & Ekspansi Suara (STT)',
+    subtitle: 'Umpan balik haptic motor dan buzzer alarm lokal, serta integrasi input suara darurat via smartphone companion.',
+    phaseId: 'iot-fase-3',
+    duration: '25 mnt',
+    level: 'Pemula',
+    xp: 60,
+    trackId: 'iot',
+  },
+  {
+    slug: 'iot-pengujian-sinta',
+    fileName: 'iot-pengujian-sinta.md',
+    title: 'Metodologi Pengujian, Pemetaan Skripsi & Rujukan SINTA',
+    subtitle: 'Matriks pengujian akurasi, sensitivitas, false alarm rate, pemetaan sitasi bab 1-5, dan rujukan jurnal nasional terakreditasi.',
+    phaseId: 'iot-fase-3',
+    duration: '30 mnt',
+    level: 'Lanjutan',
+    xp: 90,
+    trackId: 'iot',
+  },
+];
+
+export function getModulesByTrack(trackId: TrackId): CourseModule[] {
+  return trackId === 'iot' ? IOT_MODULES : COURSE_MODULES;
+}
+
+export function getPhasesByTrack(trackId: TrackId): CoursePhase[] {
+  return trackId === 'iot' ? IOT_PHASES : COURSE_PHASES;
+}
+
+export function getAllModules(): CourseModule[] {
+  return [...COURSE_MODULES, ...IOT_MODULES];
+}
+
+export function getTrackById(trackId: TrackId): CourseTrack {
+  return COURSE_TRACKS.find((t) => t.id === trackId) || COURSE_TRACKS[0];
+}
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {

@@ -12,8 +12,16 @@ import {
   BookOpen,
   Sparkles,
   Layers,
+  ShieldCheck,
+  Cpu,
 } from 'lucide-react';
-import { COURSE_MODULES, COURSE_PHASES } from '@/lib/courseData';
+import {
+  COURSE_TRACKS,
+  getModulesByTrack,
+  getPhasesByTrack,
+  getTrackById,
+  TrackId,
+} from '@/lib/courseData';
 import { useCourse } from '@/context/CourseContext';
 
 interface DraftFileItem {
@@ -29,12 +37,16 @@ export function MateriListClient({
 }) {
   const searchParams = useSearchParams();
   const initialPhase = searchParams.get('fase') || 'semua';
-  const { completedModules } = useCourse();
+  const { completedModules, activeTrack, setActiveTrack } = useCourse();
   const [selectedPhase, setSelectedPhase] = useState<string>(initialPhase);
   const [query, setQuery] = useState('');
 
+  const currentTrack = getTrackById(activeTrack);
+  const currentModules = getModulesByTrack(activeTrack);
+  const currentPhases = getPhasesByTrack(activeTrack);
+
   const filteredModules = useMemo(() => {
-    return COURSE_MODULES.filter((mod) => {
+    return currentModules.filter((mod) => {
       const matchesPhase = selectedPhase === 'semua' || mod.phaseId === selectedPhase;
       const q = query.trim().toLowerCase();
       const matchesQuery =
@@ -44,32 +56,99 @@ export function MateriListClient({
         mod.slug.toLowerCase().includes(q);
       return matchesPhase && matchesQuery;
     });
-  }, [selectedPhase, query]);
+  }, [currentModules, selectedPhase, query]);
 
   const extraTopics = useMemo(() => {
-    const coreSlugs = new Set(COURSE_MODULES.map((m) => m.slug));
+    const coreSlugs = new Set(currentModules.map((m) => m.slug));
     const q = query.trim().toLowerCase();
     return allFiles.filter(
       (f) =>
         !coreSlugs.has(f.slug) &&
+        (activeTrack === 'iot'
+          ? f.slug.startsWith('iot-')
+          : !f.slug.startsWith('iot-')) &&
         (!q || f.title.toLowerCase().includes(q) || f.slug.toLowerCase().includes(q))
     );
-  }, [allFiles, query]);
+  }, [allFiles, currentModules, activeTrack, query]);
 
   return (
     <div className="space-y-6">
+      {/* Top Track Switcher Bar */}
+      <div className="rounded-3xl border border-[#1E1B18]/10 bg-white p-3.5 sm:p-4 shadow-sm">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#6E6259]">
+              Jalur Pembelajaran
+            </span>
+            <h2 className="text-base sm:text-lg font-black text-[#1E1B18]">
+              {currentTrack.name}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {COURSE_TRACKS.map((t) => {
+              const active = t.id === activeTrack;
+              const Icon = t.id === 'iot' ? Cpu : ShieldCheck;
+              const total = getModulesByTrack(t.id).length;
+              const done = completedModules.filter((slug) =>
+                getModulesByTrack(t.id).some((m) => m.slug === slug)
+              ).length;
+
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    setActiveTrack(t.id);
+                    setSelectedPhase('semua');
+                  }}
+                  className={`flex items-center gap-2.5 rounded-2xl px-4 py-2 text-xs font-bold transition-all ${
+                    active
+                      ? 'bg-[#1E1B18] text-[#FAF3E8] shadow-sm ring-2 ring-[#1E1B18]/20'
+                      : 'border border-[#1E1B18]/10 bg-[#FAF3E8]/60 text-[#52463C] hover:bg-[#FFEAD2]/60'
+                  }`}
+                >
+                  <Icon
+                    className={`h-4 w-4 ${
+                      active
+                        ? t.id === 'iot'
+                          ? 'text-[#2DD4BF]'
+                          : 'text-[#FFB067]'
+                        : 'text-[#6E6259]'
+                    }`}
+                  />
+                  <div className="text-left">
+                    <p className="font-extrabold">{t.shortName}</p>
+                    <p className="text-[10px] opacity-70">
+                      {done}/{total} Selesai
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Header Bento */}
       <div className="rounded-3xl bg-[#1E1B18] p-6 sm:p-8 text-[#FAF3E8]">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFB067] px-3 py-1 text-xs font-extrabold text-[#1E1B18]">
-              <BookOpen className="h-3.5 w-3.5" /> Kurikulum & Referensi
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-extrabold text-[#1E1B18]"
+              style={{ backgroundColor: currentTrack.color }}
+            >
+              {currentTrack.id === 'iot' ? (
+                <Cpu className="h-3.5 w-3.5" />
+              ) : (
+                <BookOpen className="h-3.5 w-3.5" />
+              )}
+              {currentTrack.badge}
             </span>
             <h1 className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Materi Pembelajaran InfoSec
+              Materi {currentTrack.name}
             </h1>
             <p className="mt-1 text-sm text-[#FAF3E8]/70">
-              Pilih modul terstruktur atau cari topik dari {allFiles.length} berkas referensi lokal.
+              {currentTrack.description}
             </p>
           </div>
 
@@ -79,7 +158,7 @@ export function MateriListClient({
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Cari topik (mis. Web, AD, Linux)..."
+              placeholder="Cari topik atau materi..."
               className="w-full rounded-full border border-white/15 bg-white/10 py-2.5 pl-10 pr-4 text-sm text-[#FAF3E8] placeholder:text-[#FAF3E8]/40 focus:border-[#FFB067] focus:outline-none"
             />
           </div>
@@ -95,9 +174,9 @@ export function MateriListClient({
                 : 'bg-white/10 text-[#FAF3E8]/80 hover:bg-white/20'
             }`}
           >
-            Semua Fase ({COURSE_MODULES.length})
+            Semua Fase ({currentModules.length})
           </button>
-          {COURSE_PHASES.map((phase) => (
+          {currentPhases.map((phase) => (
             <button
               key={phase.id}
               onClick={() => setSelectedPhase(phase.id)}
@@ -115,9 +194,9 @@ export function MateriListClient({
 
       {/* Main Curriculum Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredModules.map((mod, idx) => {
+        {filteredModules.map((mod) => {
           const isDone = completedModules.includes(mod.slug);
-          const phase = COURSE_PHASES.find((p) => p.id === mod.phaseId);
+          const phase = currentPhases.find((p) => p.id === mod.phaseId);
           return (
             <motion.div
               key={mod.slug}
@@ -169,7 +248,7 @@ export function MateriListClient({
                     <span>{mod.level}</span>
                   </div>
                   <span className="inline-flex items-center gap-1 font-bold text-[#1E1B18] group-hover:translate-x-0.5 transition-transform">
-                    Baca <ArrowUpRight className="h-3.5 w-3.5" />
+                    Baca Tuntunan <ArrowUpRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
               </Link>
@@ -178,17 +257,21 @@ export function MateriListClient({
         })}
       </div>
 
-      {/* Additional Reference Files from Infosec_Reference/Draft */}
+      {/* Additional Reference Files */}
       {selectedPhase === 'semua' && extraTopics.length > 0 && (
         <div className="rounded-3xl border border-[#1E1B18]/10 bg-white p-6">
           <div className="flex items-center gap-2">
             <Layers className="h-5 w-5 text-[#C85A3D]" />
             <h2 className="text-lg font-extrabold text-[#1E1B18]">
-              Topik Referensi Tambahan ({extraTopics.length})
+              {activeTrack === 'iot'
+                ? `Literatur & Referensi Paper IoT (${extraTopics.length})`
+                : `Topik Referensi Tambahan (${extraTopics.length})`}
             </h2>
           </div>
           <p className="mt-1 text-xs text-[#6E6259]">
-            Semua topik lain dari koleksi Infosec_Reference juga dapat dibaca langsung di sini.
+            {activeTrack === 'iot'
+              ? 'Arsip dokumen dan literatur riset yang dapat Anda telaah sebagai bahan bab skripsi.'
+              : 'Semua topik lain dari koleksi Infosec_Reference juga dapat dibaca langsung di sini.'}
           </p>
 
           <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
